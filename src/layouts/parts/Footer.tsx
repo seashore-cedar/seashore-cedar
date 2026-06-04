@@ -19,7 +19,7 @@ export default function Footer() {
                 />
                 <span className="font-heading text-lg leading-tight text-white" style={{ letterSpacing: '-0.02em' }}>
                   Seashore<br />Cedar
-                </span
+                </span>
             </Link>
             <p className="text-sm leading-relaxed opacity-75 max-w-xs">
               Handcrafted cedar planter boxes, coastal home goods, and custom engraving — made with care on the shore.
