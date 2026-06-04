@@ -108,7 +108,7 @@ const products = [
 {
   id: 'cedar-goods',
   label: '02 — Cedar Home Goods',
-  title: 'Warm Wood for Every Room',
+  title: 'We Do More than Planters',
   body: 'From serving boards to wall art, our cedar home goods bring the warmth of natural wood into your living spaces. Every piece is sanded smooth, finished by hand, and made to last a lifetime.',
   cta: { label: 'Explore Cedar Goods', href: '/products#cedar-goods' },
   image: '/assets/boxes1.png',
@@ -121,7 +121,7 @@ const products = [
   title: 'Make It Yours',
   body: 'Names, coordinates, quotes, logos — we engrave them all. Custom engraving transforms any cedar piece into a one-of-a-kind gift or keepsake. Perfect for weddings, housewarmings, and anyone who deserves something truly personal.',
   cta: { label: 'Request Custom Engraving', href: '/custom-orders' },
-  image: '/assets/customengraved.png',
+  image: '/assets/customengraved2.png',
   imageAlt: 'Custom laser engraving on cedar wood close-up',
   reverse: false
 }];
@@ -307,7 +307,7 @@ function EngravingCalloutSection() {
             
             <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '3/4', zIndex: 1 }}>
               <img
-                src="/assets/customengraved2.png"
+                src="/assets/customengraved.png"
                 alt="Custom engraving on cedar wood close-up"
                 className="w-full h-full object-cover" />
               
@@ -327,7 +327,7 @@ function CTASection() {
       {/* Wood texture background */}
       <div className="absolute inset-0">
         <img
-          src="/assets/customengraved2.png"
+          src="/assets/customengraved.png"
           alt=""
           aria-hidden="true"
           className="w-full h-full object-cover" />

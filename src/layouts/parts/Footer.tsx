@@ -5,7 +5,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer style={{ background: 'hsl(25, 35%, 18%)', color: 'hsl(var(--background))' }}>
+    <footer style={{ position: 'relative', color: 'hsl(var(--background))' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        <img src="/assets/background-header_WW.png" alt="" aria-hidden="true" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(30, 15, 5, 0.82)' }} />
+      </div>
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
@@ -99,6 +104,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+    </div>
     </footer>
   );
 }
