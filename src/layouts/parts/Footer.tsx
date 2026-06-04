@@ -17,7 +17,7 @@ export default function Footer() {
                   aria-hidden="true"
                   className="h-10 w-auto object-contain"
                 />
-                <span className="font-heading text-lg leading-tight text-foreground" style={{ letterSpacing: '-0.02em' }}>
+                <span className="font-heading text-lg leading-tight text-white" style={{ letterSpacing: '-0.02em' }}>
                   Seashore<br />Cedar
                 </span
             </Link>
