@@ -206,8 +206,8 @@ export default function CementBeachBallsPage() {
       <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/assets/background-header_WW.png"
-            alt="Wildwoods beach scene"
+            src="/assets/BB-16Inch.png"
+            alt="16 inch painted cement beach ball"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/55 to-stone-900/70" />

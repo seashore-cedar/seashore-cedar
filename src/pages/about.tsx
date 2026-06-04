@@ -31,7 +31,7 @@ const facts = [
   {
     icon: Clock,
     label: 'Order lead time',
-    value: 'Please allow 4–5 business\ndays for all orders',
+    value: 'Please allow 4\u20135 business\ndays for all orders',
   },
   {
     icon: Dog,

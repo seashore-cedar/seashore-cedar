@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useReCaptcha } from '../components/ReCaptcha';
 import { motion } from 'motion/react';
 import { Helmet } from '@dr.pogodin/react-helmet';
 import { Link } from 'react-router-dom';
@@ -120,7 +119,6 @@ export default function CustomOrdersPage() {
   const [form, setForm] = useState<FormData>(emptyForm);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-  const { captchaVerified, ReCaptchaWidget, resetCaptcha } = useReCaptcha();
   const [policyAgreed, setPolicyAgreed] = useState(false);
 
   function handleChange(
@@ -167,7 +165,6 @@ export default function CustomOrdersPage() {
       const data = await res.json() as { ok?: boolean; error?: string };
       if (!res.ok || !data.ok) throw new Error(data.error ?? 'Something went wrong. Please try again.');
       setStatus('success');
-      resetCaptcha();
       setForm(emptyForm);
       setPolicyAgreed(false);
     } catch (err) {
@@ -669,9 +666,6 @@ export default function CustomOrdersPage() {
                       </label>
                     </div>
 
-                    {/* reCAPTCHA */}
-                    <ReCaptchaWidget />
-
                     {/* Error */}
                     {status === 'error' && (
                       <div className="flex items-start gap-3 px-4 py-3 rounded border border-destructive/30 bg-destructive/5">
@@ -682,7 +676,7 @@ export default function CustomOrdersPage() {
 
                     <button
                       type="submit"
-                      disabled={status === 'submitting' || !policyAgreed || !captchaVerified}
+                      disabled={status === 'submitting' || !policyAgreed}
                       className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {status === 'submitting' ? (

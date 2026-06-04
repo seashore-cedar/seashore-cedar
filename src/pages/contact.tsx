@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useReCaptcha } from '../components/ReCaptcha';
 import { motion } from 'motion/react';
 import { Helmet } from '@dr.pogodin/react-helmet';
 import { Mail, Phone, Instagram, Facebook, Send, CheckCircle, AlertCircle } from 'lucide-react';
@@ -36,7 +35,6 @@ export default function ContactPage() {
   const [form, setForm] = useState<FormData>(emptyForm);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-  const { captchaVerified, ReCaptchaWidget, resetCaptcha } = useReCaptcha();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -58,7 +56,6 @@ export default function ContactPage() {
         throw new Error(data.error ?? 'Something went wrong. Please try again.');
       }
       setStatus('success');
-      resetCaptcha();
       setForm(emptyForm);
     } catch (err) {
       setStatus('error');
@@ -316,13 +313,10 @@ export default function ContactPage() {
                       </div>
                     )}
 
-                    {/* reCAPTCHA */}
-              <ReCaptchaWidget />
-
-              {/* Submit */}
+                    {/* Submit */}
                     <button
                       type="submit"
-                      disabled={status === 'submitting' || !captchaVerified}
+                      disabled={status === 'submitting'}
                       className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       {status === 'submitting' ? (
