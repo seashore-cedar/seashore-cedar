@@ -1,7 +1,8 @@
 /**
  * Lightweight reCAPTCHA v2 wrapper.
  * Usage:
- *   const { captchaVerified, ReCaptchaWidget, resetCaptcha } = useReCaptcha();
+ *   const { captchaVerified, resetCaptcha } = useReCaptcha(containerRef);
+ *   <ReCaptchaWidget containerRef={containerRef} />
  */
 import { useEffect, useRef, useState, useCallback } from 'react';
 
@@ -20,7 +21,7 @@ declare global {
   }
 }
 
-const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY as string | undefined;
+export const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY as string | undefined;
 
 let scriptLoaded = false;
 const loadCallbacks: Array<() => void> = [];
@@ -44,8 +45,13 @@ function loadReCaptchaScript(onLoad: () => void) {
   document.head.appendChild(script);
 }
 
+export function ReCaptchaWidget({ containerRef }: { containerRef: React.RefObject<HTMLDivElement | null> }) {
+  if (!RECAPTCHA_SITE_KEY) return null;
+  return <div ref={containerRef} className="my-2" />;
+}
+
 export function useReCaptcha() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<number | null>(null);
   const [verified, setVerified] = useState(false);
 
@@ -57,12 +63,12 @@ export function useReCaptcha() {
   }, []);
 
   useEffect(() => {
-    if (!SITE_KEY) return;
+    if (!RECAPTCHA_SITE_KEY) return;
 
     loadReCaptchaScript(() => {
       if (!containerRef.current || widgetIdRef.current !== null) return;
       widgetIdRef.current = window.grecaptcha.render(containerRef.current, {
-        sitekey: SITE_KEY,
+        sitekey: RECAPTCHA_SITE_KEY,
         callback: () => setVerified(true),
         'expired-callback': () => setVerified(false),
         'error-callback': () => setVerified(false),
@@ -70,13 +76,8 @@ export function useReCaptcha() {
     });
   }, []);
 
-  function ReCaptchaWidget() {
-    if (!SITE_KEY) return null;
-    return <div ref={containerRef} className="my-2" />;
-  }
-
   // If no site key configured, bypass verification (dev mode)
-  const captchaVerified = !SITE_KEY || verified;
+  const captchaVerified = !RECAPTCHA_SITE_KEY || verified;
 
-  return { captchaVerified, ReCaptchaWidget, resetCaptcha: reset };
+  return { captchaVerified, containerRef, resetCaptcha: reset };
 }

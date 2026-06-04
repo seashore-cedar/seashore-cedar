@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useReCaptcha, ReCaptchaWidget } from '../components/ReCaptcha';
 import { motion } from 'motion/react';
 import { Helmet } from '@dr.pogodin/react-helmet';
 import { Link } from 'react-router-dom';
@@ -64,7 +65,7 @@ const steps = [
   {
     icon: Ruler,
     title: 'We Send a Quote',
-    body: "Within 1\u20132 business days we'll follow up with a detailed quote, timeline, and any clarifying questions.",
+    body: "Within 1–2 business days we'll follow up with a detailed quote, timeline, and any clarifying questions.",
   },
   {
     icon: Paintbrush,
@@ -119,6 +120,7 @@ export default function CustomOrdersPage() {
   const [form, setForm] = useState<FormData>(emptyForm);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const { captchaVerified, containerRef, resetCaptcha } = useReCaptcha();
   const [policyAgreed, setPolicyAgreed] = useState(false);
 
   function handleChange(
@@ -165,6 +167,7 @@ export default function CustomOrdersPage() {
       const data = await res.json() as { ok?: boolean; error?: string };
       if (!res.ok || !data.ok) throw new Error(data.error ?? 'Something went wrong. Please try again.');
       setStatus('success');
+      resetCaptcha();
       setForm(emptyForm);
       setPolicyAgreed(false);
     } catch (err) {
@@ -258,13 +261,13 @@ export default function CustomOrdersPage() {
                 {
                   icon: Clock,
                   label: 'Lead Time',
-                  value: '4\u20135 business days',
+                  value: '4–5 business days',
                   sub: 'All orders. Stain finish may require 1 additional day to cure.',
                 },
                 {
                   icon: MapPin,
                   label: 'Local Pickup',
-                  value: 'Free \u2014 by appointment',
+                  value: 'Free — by appointment',
                   sub: '320 W Pine Ave, Wildwood, NJ. We\'ll contact you when your order is ready.',
                 },
                 {
@@ -372,7 +375,7 @@ export default function CustomOrdersPage() {
                   {
                     icon: Clock,
                     title: 'Lead time',
-                    body: 'Please allow 4\u20135 business days for all orders. We build everything to order \u2014 nothing sits in a warehouse. Orders with a stain finish may require one additional day to cure fully before pickup.',
+                    body: 'Please allow 4–5 business days for all orders. We build everything to order — nothing sits in a warehouse. Orders with a stain finish may require one additional day to cure fully before pickup.',
                   },
                   {
                     icon: MapPin,
@@ -392,7 +395,7 @@ export default function CustomOrdersPage() {
                   {
                     icon: Package,
                     title: 'All items are handmade',
-                    body: "Natural cedar has variation in grain, tone, and texture \u2014 no two pieces are identical. This is part of the character of handcrafted work, not a defect. If you have questions about what to expect, just ask before ordering.",
+                    body: "Natural cedar has variation in grain, tone, and texture — no two pieces are identical. This is part of the character of handcrafted work, not a defect. If you have questions about what to expect, just ask before ordering.",
                   },
                 ].map((item) => {
                   const Icon = item.icon;
@@ -468,7 +471,7 @@ export default function CustomOrdersPage() {
               <motion.div variants={fadeUp} className="rounded border border-border p-5 bg-card">
                 <p className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">Response Time</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  We respond to all custom inquiries within 1\u20132 business days with a quote and any follow-up questions. The more detail you provide, the faster we can turn around a quote.
+                  We respond to all custom inquiries within 1–2 business days with a quote and any follow-up questions. The more detail you provide, the faster we can turn around a quote.
                 </p>
               </motion.div>
 
@@ -502,7 +505,7 @@ export default function CustomOrdersPage() {
                     </div>
                     <h3 className="font-heading text-2xl text-foreground" style={{ letterSpacing: '-0.01em' }}>Inquiry Sent!</h3>
                     <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">
-                      Thanks for reaching out. We'll review your request and get back to you with a quote within 1\u20132 business days.
+                      Thanks for reaching out. We'll review your request and get back to you with a quote within 1–2 business days.
                     </p>
                     <button
                       onClick={() => setStatus('idle')}
@@ -666,6 +669,9 @@ export default function CustomOrdersPage() {
                       </label>
                     </div>
 
+                    {/* reCAPTCHA */}
+                    <ReCaptchaWidget containerRef={containerRef} />
+
                     {/* Error */}
                     {status === 'error' && (
                       <div className="flex items-start gap-3 px-4 py-3 rounded border border-destructive/30 bg-destructive/5">
@@ -676,7 +682,7 @@ export default function CustomOrdersPage() {
 
                     <button
                       type="submit"
-                      disabled={status === 'submitting' || !policyAgreed}
+                      disabled={status === 'submitting' || !policyAgreed || !captchaVerified}
                       className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {status === 'submitting' ? (

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useReCaptcha, ReCaptchaWidget } from '../components/ReCaptcha';
 import { useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Helmet } from '@dr.pogodin/react-helmet';
@@ -43,6 +44,7 @@ export default function OrderPage() {
   const [form, setForm] = useState<FormData>(emptyForm);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const { captchaVerified, containerRef, resetCaptcha } = useReCaptcha();
 
   // Pre-filled from the product configurator
   const product = searchParams.get('product') ?? '';
@@ -95,6 +97,7 @@ export default function OrderPage() {
         throw new Error(data.error ?? 'Something went wrong. Please try again.');
       }
       setStatus('success');
+      resetCaptcha();
       setForm(emptyForm);
     } catch (err) {
       setStatus('error');
@@ -346,10 +349,13 @@ export default function OrderPage() {
                 </div>
               )}
 
+              {/* reCAPTCHA */}
+              <ReCaptchaWidget containerRef={containerRef} />
+
               {/* Submit */}
               <button
                 type="submit"
-                disabled={status === 'submitting'}
+                disabled={status === 'submitting' || !captchaVerified}
                 className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {status === 'submitting' ? (
