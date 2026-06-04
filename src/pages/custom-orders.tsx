@@ -273,7 +273,7 @@ export default function CustomOrdersPage() {
                   icon: MapPin,
                   label: 'Local Pickup',
                   value: 'Free — by appointment',
-                  sub: '320 W Pine Ave, Wildwood, NJ. We\'ll contact you when your order is ready.',
+                  sub: 'Free local pickup in Wildwood, NJ. We\'ll share our exact location when we confirm your order.',
                 },
                 {
                   icon: CreditCard,
@@ -384,8 +384,8 @@ export default function CustomOrdersPage() {
                   },
                   {
                     icon: MapPin,
-                    title: 'Free local pickup',
-                    body: "All orders are available for free local pickup in Wildwood, NJ. Once your order is confirmed, we'll reach out to schedule a convenient pickup time and share our exact location.",
+                    title: 'Pickup & Local Delivery',
+                    body: "All orders are available for free local pickup in Wildwood, NJ — we'll share our exact location once your order is confirmed. Local delivery is also available Monday–Thursday to select areas including North Wildwood, Wildwood Crest, Stone Harbor, Avalon, Cape May, and Sea Isle City. Delivery fees and availability vary by area — see our products page for full delivery details.",
                   },
                   {
                     icon: Info,
