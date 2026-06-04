@@ -98,6 +98,7 @@ const finishes: Finish[] = [
 const products: Product[] = [
   {
     id: 'box-a',
+    price: 40,
     name: 'Box A',
     dimensions: '16"W × 16"L × 16"H',
     sqft: 8.9,
@@ -110,6 +111,7 @@ const products: Product[] = [
   },
   {
     id: 'box-c',
+    price: 60,
     name: 'Box C',
     dimensions: '16"W × 16"L × 25"H',
     sqft: 12.9,
@@ -122,6 +124,7 @@ const products: Product[] = [
   },
   {
     id: 'box-abc',
+    price: 110,
     name: 'Box ABC Set',
     dimensions: 'Box A + Box C + Box B (10"W × 10"L × 13"H)',
     sqft: 26.1,
@@ -134,6 +137,7 @@ const products: Product[] = [
   },
   {
     id: 'box-g',
+    price: 130,
     name: 'Box G',
     dimensions: '16"W × 48"L × 16"H',
     sqft: 19.6,
@@ -146,6 +150,7 @@ const products: Product[] = [
   },
   {
     id: 'box-h',
+    price: 160,
     name: 'Box H',
     dimensions: '16"W × 48"L × 32"H',
     sqft: 33.8,
@@ -158,6 +163,7 @@ const products: Product[] = [
   },
   {
     id: 'box-m',
+    price: 50,
     name: 'Box M',
     dimensions: '16"W × 12"L × 13"H',
     sqft: 6.4,
@@ -170,6 +176,7 @@ const products: Product[] = [
   },
   {
     id: 'box-q',
+    price: 20,
     name: 'Box Q',
     dimensions: '9"W × 9"L × 8"H',
     sqft: 2.6,
@@ -440,6 +447,14 @@ function ProductConfigurator() {
               {selectedProduct.name}
             </h2>
             <p className="font-mono text-sm text-primary mb-4">{selectedProduct.dimensions}</p>
+
+            {/* Price */}
+            <div className="flex items-baseline gap-2 mb-4">
+              <span className="text-3xl font-bold text-foreground">${selectedProduct.price + upcharge}</span>
+              {upcharge > 0 && (
+                <span className="text-sm text-muted-foreground">includes {finishes.find(f => f.key === selectedFinish)?.shortName} finish</span>
+              )}
+            </div>
 
             {/* Hand-sanded callout */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 mb-4" style={{ background: 'hsl(var(--primary) / 0.07)' }}>
