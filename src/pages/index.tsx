@@ -28,7 +28,7 @@ function HeroSection() {
       {/* Full-bleed background image */}
       <div className="absolute inset-0">
         <img
-          src="/assets/background-header_WW.png"
+          src="/assets/hero1.png"
           alt="Cedar planter box in a coastal garden setting"
           className="w-full h-full object-cover"
           fetchPriority="high" />
@@ -101,7 +101,7 @@ const products = [
   title: 'Built to Weather the Shore',
   body: 'Our cedar planter boxes are crafted for outdoor life — naturally rot-resistant, beautifully grained, and sized to fit any garden, porch, or patio. Each box is hand-assembled and finished to let the wood breathe and age gracefully.',
   cta: { label: 'Shop Planter Boxes', href: '/products#planters' },
-  image: '/assets/Boxes ABC w dimensions.png',
+  image: '/assets/built_to_last.png',
   imageAlt: 'Handmade cedar planter boxes in an outdoor garden',
   reverse: false
 },
@@ -111,7 +111,7 @@ const products = [
   title: 'Warm Wood for Every Room',
   body: 'From serving boards to wall art, our cedar home goods bring the warmth of natural wood into your living spaces. Every piece is sanded smooth, finished by hand, and made to last a lifetime.',
   cta: { label: 'Explore Cedar Goods', href: '/products#cedar-goods' },
-  image: '/assets/Box H.png',
+  image: '/assets/boxes1.png',
   imageAlt: 'Handmade cedar wood home goods and artisan crafts',
   reverse: true
 },
@@ -121,7 +121,7 @@ const products = [
   title: 'Make It Yours',
   body: 'Names, coordinates, quotes, logos — we engrave them all. Custom engraving transforms any cedar piece into a one-of-a-kind gift or keepsake. Perfect for weddings, housewarmings, and anyone who deserves something truly personal.',
   cta: { label: 'Request Custom Engraving', href: '/custom-orders' },
-  image: '/assets/background-header_WW.png',
+  image: '/assets/customengraved.png',
   imageAlt: 'Custom laser engraving on cedar wood close-up',
   reverse: false
 }];
@@ -214,7 +214,7 @@ function CraftsmanshipSection() {
             style={{ aspectRatio: '4/3' }}>
             
             <img
-              src="/assets/pic for site Melissa and Me.jpg"
+              src="/assets/Glued_Joints.png"
               alt="Craftsman hands working cedar wood"
               className="w-full h-full object-cover" />
             
@@ -307,7 +307,7 @@ function EngravingCalloutSection() {
             
             <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '3/4', zIndex: 1 }}>
               <img
-                src="/assets/background-header_WW.png"
+                src="/assets/customengraved2.png"
                 alt="Custom engraving on cedar wood close-up"
                 className="w-full h-full object-cover" />
               
@@ -327,7 +327,7 @@ function CTASection() {
       {/* Wood texture background */}
       <div className="absolute inset-0">
         <img
-          src="/assets/background-header_WW.png"
+          src="/assets/customengraved2.png"
           alt=""
           aria-hidden="true"
           className="w-full h-full object-cover" />
