@@ -364,6 +364,7 @@ export default function OrderPage() {
                     <option value="Wildwood Crest (free)">Wildwood Crest — Free</option>
                     <option value="Stone Harbor (+$5)">Stone Harbor — +$5</option>
                     <option value="Avalon (+$7.50)">Avalon — +$7.50</option>
+                    <option value="Cape May (+$7.50)">Cape May — +$7.50</option>
                     <option value="Sea Isle City (+$10)">Sea Isle City — +$10</option>
                   </select>
                   <p className="text-xs text-muted-foreground mt-1">

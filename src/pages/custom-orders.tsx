@@ -567,6 +567,7 @@ export default function CustomOrdersPage() {
                               <option value="Wildwood Crest (free)">Wildwood Crest — Free</option>
                               <option value="Stone Harbor (+$5)">Stone Harbor — +$5</option>
                               <option value="Avalon (+$7.50)">Avalon — +$7.50</option>
+                              <option value="Cape May (+$7.50)">Cape May — +$7.50</option>
                               <option value="Sea Isle City (+$10)">Sea Isle City — +$10</option>
                             </select>
                             <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
