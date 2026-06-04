@@ -1,18 +1,12 @@
 /**
- * Send transactional email via SMTP using nodemailer.
+ * Send transactional email via Brevo (formerly Sendinblue) HTTP API.
  * Configure with environment variables:
- *   SMTP_HOST     - SMTP server hostname (e.g. smtp.gmail.com)
- *   SMTP_PORT     - SMTP port (default: 587)
- *   SMTP_USER     - SMTP username / email address
- *   SMTP_PASS     - SMTP password or app password
- *   SMTP_FROM     - From address (defaults to SMTP_USER)
+ *   BREVO_API_KEY   - Your Brevo API key (Settings → API Keys)
+ *   SMTP_FROM       - From address e.g. "Seashore Cedar <seashorecedar@usa.com>"
  */
-import nodemailer from 'nodemailer';
 
 export type SendEmailInput = {
   to: string | string[];
-  cc?: string | string[];
-  bcc?: string | string[];
   subject: string;
   text?: string;
   html?: string;
@@ -24,40 +18,46 @@ export type SendEmailResult = {
   messageId: string;
 };
 
-function getTransporter() {
-  const host = process.env.SMTP_HOST;
-  const port = parseInt(process.env.SMTP_PORT ?? '587', 10);
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-
-  if (!host || !user || !pass) {
-    throw new Error(
-      'Email not configured. Set SMTP_HOST, SMTP_USER, and SMTP_PASS environment variables.'
-    );
-  }
-
-  return nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: { user, pass },
-  });
+function parseAddress(addr: string): { email: string; name?: string } {
+  const match = addr.match(/^(.+?)\s*<([^>]+)>$/);
+  if (match) return { name: match[1].trim(), email: match[2].trim() };
+  return { email: addr.trim() };
 }
 
 export async function sendEmail(input: SendEmailInput): Promise<SendEmailResult> {
-  const transporter = getTransporter();
-  const from = input.from ?? process.env.SMTP_FROM ?? process.env.SMTP_USER;
+  const apiKey = process.env.BREVO_API_KEY;
+  if (!apiKey) throw new Error('BREVO_API_KEY environment variable not set.');
 
-  const info = await transporter.sendMail({
-    from,
-    to: input.to,
-    cc: input.cc,
-    bcc: input.bcc,
+  const fromStr = input.from ?? process.env.SMTP_FROM ?? '';
+  const sender = parseAddress(fromStr);
+
+  const toList = Array.isArray(input.to) ? input.to : [input.to];
+  const toAddresses = toList.map(parseAddress);
+
+  const body: Record<string, unknown> = {
+    sender,
+    to: toAddresses,
     subject: input.subject,
-    text: input.text,
-    html: input.html,
-    replyTo: input.replyTo,
+  };
+
+  if (input.html) body.htmlContent = input.html;
+  if (input.text) body.textContent = input.text;
+  if (input.replyTo) body.replyTo = parseAddress(input.replyTo);
+
+  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'api-key': apiKey,
+    },
+    body: JSON.stringify(body),
   });
 
-  return { messageId: info.messageId };
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Brevo API error ${res.status}: ${err}`);
+  }
+
+  const data = await res.json() as { messageId?: string };
+  return { messageId: data.messageId ?? 'sent' };
 }
