@@ -25,3 +25,7 @@ services:
         sync: false
       - key: PUBLIC_URL
         sync: false
+      - key: VITE_RECAPTCHA_SITE_KEY
+        sync: false
+      - key: BREVO_API_KEY
+        sync: false
