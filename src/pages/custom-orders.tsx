@@ -28,6 +28,8 @@ interface FormData {
   name: string;
   email: string;
   phone: string;
+  fulfillment: string;
+  deliveryArea: string;
   productType: string;
   quantity: string;
   dimensions: string;
@@ -43,6 +45,8 @@ const emptyForm: FormData = {
   name: '',
   email: '',
   phone: '',
+  fulfillment: 'pickup',
+  deliveryArea: '',
   productType: '',
   quantity: '1',
   dimensions: '',
@@ -160,6 +164,7 @@ export default function CustomOrdersPage() {
           name: form.name,
           email: form.email,
           phone: form.phone,
+          fulfillment: form.fulfillment === 'delivery' ? `Delivery to ${form.deliveryArea}` : 'Local Pickup',
           subject,
           message,
         }),
@@ -380,7 +385,7 @@ export default function CustomOrdersPage() {
                   {
                     icon: MapPin,
                     title: 'Free local pickup',
-                    body: "All orders are available for free pickup at 320 W Pine Ave, Wildwood, NJ. We'll reach out by email or phone when your order is ready to arrange a convenient time.",
+                    body: "All orders are available for free local pickup in Wildwood, NJ. Once your order is confirmed, we'll reach out to schedule a convenient pickup time and share our exact location.",
                   },
                   {
                     icon: Info,
@@ -532,6 +537,46 @@ export default function CustomOrdersPage() {
                           value={form.email} onChange={handleChange} placeholder="your@email.com" />
                       </Field>
                     </div>
+
+
+                    {/* Pickup or Delivery */}
+                    <div className="flex flex-col gap-1.5">
+                      <Field label="Pickup or Delivery" required>
+                        <div className="relative">
+                          <select id="fulfillment" name="fulfillment" required
+                            value={form.fulfillment} onChange={handleChange}
+                            className="appearance-none w-full">
+                            <option value="pickup">Free Local Pickup — Wildwood, NJ</option>
+                            <option value="delivery">Local Delivery (Mon–Thu, when available)</option>
+                          </select>
+                          <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+                        </div>
+                      </Field>
+                    </div>
+
+                    {form.fulfillment === 'delivery' && (
+                      <div className="flex flex-col gap-1.5">
+                        <Field label="Delivery Area" required>
+                          <div className="relative">
+                            <select id="deliveryArea" name="deliveryArea" required
+                              value={form.deliveryArea} onChange={handleChange}
+                              className="appearance-none w-full">
+                              <option value="">Select your area...</option>
+                              <option value="North Wildwood (free)">North Wildwood — Free</option>
+                              <option value="Wildwood (free)">Wildwood — Free</option>
+                              <option value="Wildwood Crest (free)">Wildwood Crest — Free</option>
+                              <option value="Stone Harbor (+$5)">Stone Harbor — +$5</option>
+                              <option value="Avalon (+$7.50)">Avalon — +$7.50</option>
+                              <option value="Sea Isle City (+$10)">Sea Isle City — +$10</option>
+                            </select>
+                            <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
+                          </div>
+                        </Field>
+                        <p className="text-xs text-muted-foreground">
+                          Delivery available Monday–Thursday to the above areas only. All other locations must arrange free local pickup in Wildwood, NJ. Fees and scheduling confirmed when we reach out.
+                        </p>
+                      </div>
+                    )}
 
                     {/* Phone + Product Type */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

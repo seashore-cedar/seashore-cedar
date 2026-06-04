@@ -26,6 +26,8 @@ interface FormData {
   email: string;
   phone: string;
   quantity: string;
+  fulfillment: string;
+  deliveryArea: string;
   notes: string;
 }
 
@@ -34,6 +36,8 @@ const emptyForm: FormData = {
   email: '',
   phone: '',
   quantity: '1',
+  fulfillment: 'pickup',
+  deliveryArea: '',
   notes: '',
 };
 
@@ -69,6 +73,8 @@ export default function OrderPage() {
       dimensions ? `Dimensions: ${dimensions}` : '',
       finish ? `Finish: ${finish}` : '',
       `Quantity: ${form.quantity}`,
+      `Fulfillment: ${form.fulfillment === 'delivery' ? `Delivery to ${form.deliveryArea}` : 'Local Pickup'}`,
+      form.fulfillment === 'delivery' && form.deliveryArea ? `Delivery Area: ${form.deliveryArea}` : '',
       '',
       `=== CUSTOMER INFO ===`,
       `Name: ${form.name}`,
@@ -320,6 +326,52 @@ export default function OrderPage() {
                 </div>
               </div>
 
+              {/* Pickup or Delivery */}
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="fulfillment" className="text-sm font-semibold text-foreground">
+                  Pickup or Delivery <span className="text-primary">*</span>
+                </label>
+                <select
+                  id="fulfillment"
+                  name="fulfillment"
+                  required
+                  value={form.fulfillment}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded border border-border bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-colors"
+                >
+                  <option value="pickup">Free Local Pickup — Wildwood, NJ</option>
+                  <option value="delivery">Local Delivery (Mon–Thu, when available)</option>
+                </select>
+              </div>
+
+              {/* Delivery area */}
+              {form.fulfillment === 'delivery' && (
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="deliveryArea" className="text-sm font-semibold text-foreground">
+                    Delivery Area <span className="text-primary">*</span>
+                  </label>
+                  <select
+                    id="deliveryArea"
+                    name="deliveryArea"
+                    required
+                    value={form.deliveryArea}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded border border-border bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-colors"
+                  >
+                    <option value="">Select your area...</option>
+                    <option value="North Wildwood (free)">North Wildwood — Free</option>
+                    <option value="Wildwood (free)">Wildwood — Free</option>
+                    <option value="Wildwood Crest (free)">Wildwood Crest — Free</option>
+                    <option value="Stone Harbor (+$5)">Stone Harbor — +$5</option>
+                    <option value="Avalon (+$7.50)">Avalon — +$7.50</option>
+                    <option value="Sea Isle City (+$10)">Sea Isle City — +$10</option>
+                  </select>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Delivery available Monday–Thursday to the above areas only. All other locations must arrange free local pickup in Wildwood, NJ. Fees and scheduling confirmed when we reach out.
+                  </p>
+                </div>
+              )}
+
               {/* Notes */}
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="notes" className="text-sm font-semibold text-foreground">
@@ -338,7 +390,7 @@ export default function OrderPage() {
 
               {/* Pickup note */}
               <div className="rounded border border-border bg-muted/40 px-4 py-3 text-xs text-muted-foreground leading-relaxed">
-                <strong className="text-foreground">Free local pickup</strong> — We'll reach out within 1–2 business days to confirm your order and schedule pickup from our Wildwood, NJ workshop. Please allow 4–5 business days for your order to be ready.
+                <strong className="text-foreground">Pickup &amp; Delivery</strong> — We'll reach out within 1–2 business days to confirm your order, share pickup location details, or confirm delivery availability and scheduling. Please allow 4–5 business days for your order to be ready.
               </div>
 
               {/* Error message */}

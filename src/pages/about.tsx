@@ -21,7 +21,7 @@ const facts = [
   {
     icon: MapPin,
     label: 'Where we are',
-    value: '320 W Pine Ave\nWildwood, NJ',
+    value: 'Wildwood, NJ',
   },
   {
     icon: Package,
@@ -31,7 +31,7 @@ const facts = [
   {
     icon: Clock,
     label: 'Order lead time',
-    value: 'Please allow 4\u20135 business\ndays for all orders',
+    value: 'Please allow 4–5 business\ndays for all orders',
   },
   {
     icon: Dog,
@@ -142,11 +142,11 @@ export default function AboutPage() {
               </motion.blockquote>
 
               <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed">
-                So in 2024, we packed up, landed at <strong className="text-foreground font-semibold">320 W Pine Ave</strong>, and got to work. Literally. We'd always loved building and making things — there's something deeply satisfying about starting with raw wood and ending with something that belongs on someone's porch. We started making cedar planter boxes, trellis panels, and hand-painted cement beach balls, and before long we were laser-cutting town letters and nautical motifs out of cedar scraps from our own builds.
+                So in 2024, we packed up, landed in Wildwood, and got to work. Literally. We'd always loved building and making things — there's something deeply satisfying about starting with raw wood and ending with something that belongs on someone's porch. We started making cedar planter boxes, trellis panels, and hand-painted cement beach balls, and before long we were laser-cutting town letters and nautical motifs out of cedar scraps from our own builds.
               </motion.p>
 
               <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed">
-                Everything we make is built right here in Wildwood, by hand, with materials we'd put in front of our own home. We're not a warehouse. We're not a dropshipper. We're your neighbors on Pine Ave, and every piece we make carries a little bit of the care and pride we brought down the AC Expressway from Philly.
+                Everything we make is built right here in Wildwood, by hand, with materials we'd put in front of our own home. We're not a warehouse. We're not a dropshipper. We're your neighbors on the shore, and every piece we make carries a little bit of the care and pride we brought down the AC Expressway from Philly.
               </motion.p>
 
               <motion.p variants={fadeUp} className="text-muted-foreground leading-relaxed">
