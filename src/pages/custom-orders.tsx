@@ -220,7 +220,7 @@ export default function CustomOrdersPage() {
             <motion.h2 variants={fadeUp} className="font-heading text-3xl md:text-4xl text-foreground text-center mb-12" style={{ letterSpacing: '-0.02em' }}>
               How It Works
             </motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {steps.map((step, i) => {
                 const Icon = step.icon;
                 return (
@@ -422,8 +422,8 @@ export default function CustomOrdersPage() {
 
       {/* ── Form + Sidebar ── */}
       <section className="py-16 md:py-24" style={{ background: 'hsl(25, 30%, 94%)' }}>
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+        <div className="container mx-auto px-6 overflow-x-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
 
             {/* ── Sidebar ── */}
             <motion.div
@@ -711,8 +711,6 @@ export default function CustomOrdersPage() {
                       </label>
                     </div>
 
-                    {/* reCAPTCHA */}
-                    <ReCaptchaWidget containerRef={containerRef} />
 
                     {/* Error */}
                     {status === 'error' && (
