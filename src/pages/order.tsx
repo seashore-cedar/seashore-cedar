@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useReCaptcha, ReCaptchaWidget } from '../components/ReCaptcha';
 import { useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Helmet } from '@dr.pogodin/react-helmet';
@@ -48,7 +47,6 @@ export default function OrderPage() {
   const [form, setForm] = useState<FormData>(emptyForm);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-  const { captchaVerified, containerRef, resetCaptcha } = useReCaptcha();
 
   // Pre-filled from the product configurator
   const product = searchParams.get('product') ?? '';
@@ -103,7 +101,6 @@ export default function OrderPage() {
         throw new Error(data.error ?? 'Something went wrong. Please try again.');
       }
       setStatus('success');
-      resetCaptcha();
       setForm(emptyForm);
     } catch (err) {
       setStatus('error');
@@ -364,7 +361,6 @@ export default function OrderPage() {
                     <option value="Wildwood Crest (free)">Wildwood Crest — Free</option>
                     <option value="Stone Harbor (+$5)">Stone Harbor — +$5</option>
                     <option value="Avalon (+$7.50)">Avalon — +$7.50</option>
-                    <option value="Cape May (+$7.50)">Cape May — +$7.50</option>
                     <option value="Sea Isle City (+$10)">Sea Isle City — +$10</option>
                   </select>
                   <p className="text-xs text-muted-foreground mt-1">
@@ -402,13 +398,10 @@ export default function OrderPage() {
                 </div>
               )}
 
-              {/* reCAPTCHA */}
-              <ReCaptchaWidget containerRef={containerRef} />
-
               {/* Submit */}
               <button
                 type="submit"
-                disabled={status === 'submitting' || !captchaVerified}
+                disabled={status === 'submitting'}
                 className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {status === 'submitting' ? (

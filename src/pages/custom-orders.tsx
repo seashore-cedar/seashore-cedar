@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useReCaptcha, ReCaptchaWidget } from '../components/ReCaptcha';
 import { motion } from 'motion/react';
 import { Helmet } from '@dr.pogodin/react-helmet';
 import { Link } from 'react-router-dom';
@@ -124,7 +123,6 @@ export default function CustomOrdersPage() {
   const [form, setForm] = useState<FormData>(emptyForm);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-  const { captchaVerified, containerRef, resetCaptcha } = useReCaptcha();
   const [policyAgreed, setPolicyAgreed] = useState(false);
 
   function handleChange(
@@ -172,7 +170,6 @@ export default function CustomOrdersPage() {
       const data = await res.json() as { ok?: boolean; error?: string };
       if (!res.ok || !data.ok) throw new Error(data.error ?? 'Something went wrong. Please try again.');
       setStatus('success');
-      resetCaptcha();
       setForm(emptyForm);
       setPolicyAgreed(false);
     } catch (err) {
@@ -567,7 +564,6 @@ export default function CustomOrdersPage() {
                               <option value="Wildwood Crest (free)">Wildwood Crest — Free</option>
                               <option value="Stone Harbor (+$5)">Stone Harbor — +$5</option>
                               <option value="Avalon (+$7.50)">Avalon — +$7.50</option>
-                              <option value="Cape May (+$7.50)">Cape May — +$7.50</option>
                               <option value="Sea Isle City (+$10)">Sea Isle City — +$10</option>
                             </select>
                             <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
@@ -728,7 +724,7 @@ export default function CustomOrdersPage() {
 
                     <button
                       type="submit"
-                      disabled={status === 'submitting' || !policyAgreed || !captchaVerified}
+                      disabled={status === 'submitting' || !policyAgreed}
                       className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {status === 'submitting' ? (
