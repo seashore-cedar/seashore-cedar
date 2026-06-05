@@ -361,8 +361,8 @@ function CutoutCard({ product }: { product: CutoutProduct }) {
   const finishName = finishes.find(f => f.key === selectedFinish)?.name ?? 'No Finish';
 
   const orderParams = new URLSearchParams({
-    product: product.name,
-    size: sizeOption.label,
+    product: `${product.name} (${sizeOption.label})`,
+    dimensions: sizeOption.label,
     finish: finishName,
     price: `$${totalPrice}`,
   });
@@ -434,7 +434,7 @@ function CutoutCard({ product }: { product: CutoutProduct }) {
 
         {/* CTA */}
         <Link
-          to={`/custom-orders?${orderParams.toString()}`}
+          to={`/order?${orderParams.toString()}`}
           className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
         >
           Order This Cutout <ArrowRight size={15} />
