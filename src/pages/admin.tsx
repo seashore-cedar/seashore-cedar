@@ -9,20 +9,20 @@ const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD as string | undefined
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const initialPlanters = [
-  { id: 'box-a', name: 'Box A', price: 40, dimensions: '16"W × 16"L × 16"H', image: '/assets/Box A w dimensions.png', description: 'A compact square planter with a classic profile. Every surface is hand-sanded for a smooth, splinter-free finish — perfect for a single statement plant on a porch step, deck corner, or entryway.', visible: true },
-  { id: 'box-c', name: 'Box C', price: 60, dimensions: '16"W × 16"L × 25"H', image: '/assets/Box C.png', description: 'Same footprint as Box A but taller — hand-sanded smooth on every face. Great for trailing plants, tall grasses, or adding visual height to a garden arrangement.', visible: true },
-  { id: 'box-abc', name: 'Box ABC Set', price: 110, dimensions: 'Box A + Box C + Box B (10"W × 10"L × 13"H)', image: '/assets/Boxes ABC w dimensions.png', description: 'Three graduated planters sold as a set. Arrange them on stairs, a deck, or an entryway for a layered, designer look.', visible: true },
-  { id: 'box-g', name: 'Box G', price: 130, dimensions: '16"W × 48"L × 16"H', image: '/assets/Box G.png', description: 'A long, low planter built for railings, walkways, and wide deck edges. The extended length makes it ideal for herb gardens, mixed plantings, or a bold horizontal statement.', visible: true },
-  { id: 'box-h', name: 'Box H', price: 160, dimensions: '16"W × 48"L × 32"H', image: '/assets/Box H.png', description: 'Our tallest long-format planter. Built for privacy screens, tall ornamental grasses, or dramatic entrances.', visible: true },
-  { id: 'box-m', name: 'Box M', price: 50, dimensions: '16"W × 12"L × 13"H', image: '/assets/Box M w dimensions.png', description: 'A compact rectangular planter with a low profile. Perfect for windowsills, tabletops, or tight deck spaces.', visible: true },
-  { id: 'box-q', name: 'Box Q', price: 20, dimensions: '9"W × 9"L × 8"H', image: '/assets/Box Q.png', description: 'Our smallest planter — a perfect tabletop accent or gift. Hand-sanded to the same standard as every other box we make.', visible: true },
+  { id: 'box-a', name: 'Box A', price: 40, dimensions: '16"W × 16"L × 16"H', image: '/assets/Box A w dimensions.png', description: 'A compact square planter with a classic profile. Every surface is hand-sanded for a smooth, splinter-free finish — perfect for a single statement plant on a porch step, deck corner, or entryway.', finishUpcharges: { blo: 10, tung: 10, stain: 10, waterseal: 10 }, visible: true },
+  { id: 'box-c', name: 'Box C', price: 60, dimensions: '16"W × 16"L × 25"H', image: '/assets/Box C.png', description: 'Same footprint as Box A but taller — hand-sanded smooth on every face. Great for trailing plants, tall grasses, or adding visual height to a garden arrangement.', finishUpcharges: { blo: 10, tung: 10, stain: 10, waterseal: 10 }, visible: true },
+  { id: 'box-abc', name: 'Box ABC Set', price: 110, dimensions: 'Box A + Box C + Box B (10"W × 10"L × 13"H)', image: '/assets/Boxes ABC w dimensions.png', description: 'Three graduated planters sold as a set. Arrange them on stairs, a deck, or an entryway for a layered, designer look.', finishUpcharges: { blo: 10, tung: 15, stain: 10, waterseal: 15 }, visible: true },
+  { id: 'box-g', name: 'Box G', price: 130, dimensions: '16"W × 48"L × 16"H', image: '/assets/Box G.png', description: 'A long, low planter built for railings, walkways, and wide deck edges. The extended length makes it ideal for herb gardens, mixed plantings, or a bold horizontal statement.', finishUpcharges: { blo: 10, tung: 15, stain: 10, waterseal: 10 }, visible: true },
+  { id: 'box-h', name: 'Box H', price: 160, dimensions: '16"W × 48"L × 32"H', image: '/assets/Box H.png', description: 'Our tallest long-format planter. Built for privacy screens, tall ornamental grasses, or dramatic entrances.', finishUpcharges: { blo: 15, tung: 15, stain: 10, waterseal: 15 }, visible: true },
+  { id: 'box-m', name: 'Box M', price: 50, dimensions: '16"W × 12"L × 13"H', image: '/assets/Box M w dimensions.png', description: 'A compact rectangular planter with a low profile. Perfect for windowsills, tabletops, or tight deck spaces.', finishUpcharges: { blo: 10, tung: 10, stain: 10, waterseal: 10 }, visible: true },
+  { id: 'box-q', name: 'Box Q', price: 20, dimensions: '9"W × 9"L × 8"H', image: '/assets/Box Q.png', description: 'Our smallest planter — a perfect tabletop accent or gift. Hand-sanded to the same standard as every other box we make.', finishUpcharges: { blo: 10, tung: 10, stain: 10, waterseal: 10 }, visible: true },
 ];
 
 const initialCutouts = [
-  { id: 'single-letter', name: 'Single Letter', smallPrice: 14, mediumPrice: 24, largePrice: 34, image: '/assets/customengraved2.png', description: 'A single cedar letter, hand-cut and planed smooth.', visible: true },
-  { id: 'two-letter', name: '2-Letter Set', smallPrice: 24, mediumPrice: 39, largePrice: 54, image: '/assets/customengraved2.png', description: 'Two cedar letters cut as a matched set.', visible: true },
-  { id: 'three-letter', name: '3-Letter Set', smallPrice: 29, mediumPrice: 49, largePrice: 69, image: '/assets/customengraved2.png', description: 'Three cedar letters as a matched set.', visible: true },
-  { id: 'nautical-motif', name: 'Nautical & Beach Motif', smallPrice: 19, mediumPrice: 34, largePrice: 49, image: '/assets/customengraved2.png', description: 'Hand-cut cedar shapes inspired by the coast.', visible: true },
+  { id: 'single-letter', name: 'Single Letter', smallPrice: 14, mediumPrice: 24, largePrice: 34, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'A single cedar letter, hand-cut and planed smooth.', visible: true },
+  { id: 'two-letter', name: '2-Letter Set', smallPrice: 24, mediumPrice: 39, largePrice: 54, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'Two cedar letters cut as a matched set.', visible: true },
+  { id: 'three-letter', name: '3-Letter Set', smallPrice: 29, mediumPrice: 49, largePrice: 69, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'Three cedar letters as a matched set.', visible: true },
+  { id: 'nautical-motif', name: 'Nautical & Beach Motif', smallPrice: 19, mediumPrice: 34, largePrice: 49, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'Hand-cut cedar shapes inspired by the coast.', visible: true },
 ];
 
 const initialBalls = [
@@ -35,15 +35,10 @@ const initialYardSale: Array<{ id: string; name: string; price: number; image: s
 
 const initialEpoxy: Array<{ id: string; name: string; price: number; image: string; description: string; visible: boolean }> = [];
 
-const finishUpcharges = [
-  { key: 'none', name: 'No Finish', upcharge: 0 },
-  { key: 'blo', name: 'Boiled Linseed Oil', upcharge: 10 },
-  { key: 'tung', name: 'Tung Oil', upcharge: 10 },
-  { key: 'stain', name: 'Exterior Stain', upcharge: 10 },
-  { key: 'waterseal', name: "Thompson's WaterSeal", upcharge: 10 },
-];
+// Finish labels for display
+const finishLabels: Record<string, string> = { blo: 'Boiled Linseed Oil', tung: 'Tung Oil', stain: 'Exterior Stain', waterseal: "Thompson's WaterSeal" };
 
-type Tab = 'planters' | 'cutouts' | 'balls' | 'yardsale' | 'epoxy' | 'finishes' | 'images';
+type Tab = 'planters' | 'cutouts' | 'balls' | 'yardsale' | 'epoxy' | 'images';
 
 // ─── Login Screen ─────────────────────────────────────────────────────────────
 
@@ -159,6 +154,22 @@ function SimpleProductTab({ products, setProducts, emptyLabel }: {
           <Field label="Description">
             <textarea className={inputClass + ' resize-none'} rows={3} value={p.description} onChange={e => update(p.id, 'description', e.target.value)} />
           </Field>
+          <div className="mt-4 mb-2">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Finish Upcharges (+$)</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {Object.entries(finishLabels).map(([key, label]) => (
+                <div key={key} className="flex flex-col gap-1">
+                  <label className="text-xs text-muted-foreground">{label}</label>
+                  <input className={inputClass} type="number"
+                    value={(p as any).finishUpcharges?.[key] ?? 0}
+                    onChange={e => {
+                      const updated = { ...((p as any).finishUpcharges || {}), [key]: Number(e.target.value) };
+                      update(p.id, 'finishUpcharges' as any, updated);
+                    }} />
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="flex items-center justify-between mt-4">
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input type="checkbox" checked={p.visible} onChange={e => update(p.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
@@ -203,6 +214,22 @@ function PlantersTab({ planters, setPlanters }: { planters: typeof initialPlante
           <Field label="Description">
             <textarea className={inputClass + ' resize-none'} rows={3} value={p.description} onChange={e => update(p.id, 'description', e.target.value)} />
           </Field>
+          <div className="mt-4 mb-2">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Finish Upcharges (+$)</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {Object.entries(finishLabels).map(([key, label]) => (
+                <div key={key} className="flex flex-col gap-1">
+                  <label className="text-xs text-muted-foreground">{label}</label>
+                  <input className={inputClass} type="number"
+                    value={(p as any).finishUpcharges?.[key] ?? 0}
+                    onChange={e => {
+                      const updated = { ...((p as any).finishUpcharges || {}), [key]: Number(e.target.value) };
+                      update(p.id, 'finishUpcharges' as any, updated);
+                    }} />
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="flex items-center justify-between mt-4">
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input type="checkbox" checked={p.visible} onChange={e => update(p.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
@@ -241,6 +268,23 @@ function CutoutsTab({ cutouts, setCutouts }: { cutouts: typeof initialCutouts; s
           <Field label="Description">
             <textarea className={inputClass + ' resize-none'} rows={2} value={c.description} onChange={e => update(c.id, 'description', e.target.value)} />
           </Field>
+          <div className="mt-4 mb-2">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Finish Upcharges — Small & Medium (+$) <span className="font-normal normal-case">(Large size includes finish in base price)</span></p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-2">
+              {Object.entries(finishLabels).map(([key, label]) => (
+                <div key={key} className="flex flex-col gap-1">
+                  <label className="text-xs text-muted-foreground">{label}</label>
+                  <input className={inputClass} type="number"
+                    value={(c as any).smallFinish?.[key] ?? 0}
+                    onChange={e => {
+                      const upd = { ...((c as any).smallFinish || {}), [key]: Number(e.target.value) };
+                      update(c.id, 'smallFinish' as any, upd);
+                      update(c.id, 'mediumFinish' as any, upd);
+                    }} />
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="mt-4">
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input type="checkbox" checked={c.visible} onChange={e => update(c.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
@@ -286,28 +330,6 @@ function BallsTab({ balls, setBalls }: { balls: typeof initialBalls; setBalls: (
   );
 }
 
-// ─── Finishes Tab ─────────────────────────────────────────────────────────────
-
-function FinishesTab({ finishes, setFinishes }: { finishes: typeof finishUpcharges; setFinishes: (f: typeof finishUpcharges) => void }) {
-  function update(key: string, upcharge: number) {
-    setFinishes(finishes.map(f => f.key === key ? { ...f, upcharge } : f));
-  }
-  return (
-    <div className="flex flex-col gap-3">
-      <p className="text-xs text-muted-foreground mb-2">These upcharges apply to all cedar planter boxes and cutouts.</p>
-      {finishes.map(f => (
-        <div key={f.key} className="flex items-center justify-between gap-4 py-3 border-b border-border last:border-0">
-          <span className="text-sm text-foreground">{f.name}</span>
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-muted-foreground">+$</span>
-            <input className="w-20 px-3 py-1.5 rounded border border-border bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 text-right"
-              type="number" value={f.upcharge} onChange={e => update(f.key, Number(e.target.value))} />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 // ─── Images Tab ───────────────────────────────────────────────────────────────
 
@@ -376,7 +398,7 @@ function ImagesTab() {
 
 // ─── Code Generators ──────────────────────────────────────────────────────────
 
-function generateProductsCode(planters: typeof initialPlanters, finishes: typeof finishUpcharges) {
+function generateProductsCode(planters: typeof initialPlanters) {
   const arr = planters.filter(p => p.visible).map(p => `  {
     id: '${p.id}',
     price: ${p.price},
@@ -387,7 +409,7 @@ function generateProductsCode(planters: typeof initialPlanters, finishes: typeof
     bestFor: [],
     image: '${p.image}',
     imageAlt: '${p.name} cedar planter',
-    finishUpcharges: { ${finishes.map(f => `${f.key}: ${f.upcharge}`).join(', ')} },
+    finishUpcharges: { none: 0, ${Object.entries(p.finishUpcharges || {blo:10,tung:10,stain:10,waterseal:10}).map(([k,v]) => `${k}: ${v}`).join(', ')} },
   }`).join(',\n');
   return `// ADMIN EXPORT — replace products array in src/pages/products.tsx\nexport const GENERATED_PRODUCTS = [\n${arr}\n];`;
 }
@@ -439,19 +461,17 @@ export default function AdminPage() {
   const [balls, setBalls] = useState(initialBalls);
   const [yardSale, setYardSale] = useState(initialYardSale);
   const [epoxy, setEpoxy] = useState(initialEpoxy);
-  const [finishes, setFinishes] = useState(finishUpcharges);
   const [saved, setSaved] = useState(false);
 
   if (!authed) return <LoginScreen onLogin={() => setAuthed(true)} />;
 
   function handleSave() {
     const exports: Record<Tab, () => void> = {
-      planters: () => downloadFile('ADMIN_products.ts', generateProductsCode(planters, finishes)),
+      planters: () => downloadFile('ADMIN_products.ts', generateProductsCode(planters)),
       cutouts: () => downloadFile('ADMIN_cutouts.ts', generateCutoutsCode(cutouts)),
       balls: () => downloadFile('ADMIN_balls.ts', generateBallsCode(balls)),
       yardsale: () => downloadFile('ADMIN_yardsale.ts', generateSimpleCode(yardSale, 'Yard Sale', 'GENERATED_YARD_SALE')),
       epoxy: () => downloadFile('ADMIN_epoxy.ts', generateSimpleCode(epoxy, 'Artisan Epoxy', 'GENERATED_EPOXY')),
-      finishes: () => downloadFile('ADMIN_products.ts', generateProductsCode(planters, finishes)),
       images: () => {},
     };
     exports[tab]();
@@ -460,7 +480,7 @@ export default function AdminPage() {
   }
 
   function handleExportAll() {
-    downloadFile('ADMIN_products.ts', generateProductsCode(planters, finishes));
+    downloadFile('ADMIN_products.ts', generateProductsCode(planters));
     downloadFile('ADMIN_cutouts.ts', generateCutoutsCode(cutouts));
     downloadFile('ADMIN_balls.ts', generateBallsCode(balls));
     if (yardSale.length > 0) downloadFile('ADMIN_yardsale.ts', generateSimpleCode(yardSale, 'Yard Sale', 'GENERATED_YARD_SALE'));
@@ -475,7 +495,6 @@ export default function AdminPage() {
     { key: 'balls', label: 'Cement Balls', icon: <Circle size={14} /> },
     { key: 'yardsale', label: 'Yard Sale', icon: <Tag size={14} /> },
     { key: 'epoxy', label: 'Artisan Epoxy', icon: <Sparkles size={14} /> },
-    { key: 'finishes', label: 'Finish Upcharges', icon: <Type size={14} /> },
     { key: 'images', label: 'Images', icon: <Image size={14} /> },
   ];
 
@@ -538,7 +557,6 @@ export default function AdminPage() {
           {tab === 'balls' && <BallsTab balls={balls} setBalls={setBalls} />}
           {tab === 'yardsale' && <SimpleProductTab products={yardSale} setProducts={setYardSale} emptyLabel="yard sale" />}
           {tab === 'epoxy' && <SimpleProductTab products={epoxy} setProducts={setEpoxy} emptyLabel="artisan epoxy" />}
-          {tab === 'finishes' && <FinishesTab finishes={finishes} setFinishes={setFinishes} />}
           {tab === 'images' && <ImagesTab />}
         </div>
       </div>
