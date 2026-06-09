@@ -411,7 +411,7 @@ function generateProductsCode(planters: typeof initialPlanters) {
     imageAlt: '${p.name} cedar planter',
     finishUpcharges: { none: 0, ${Object.entries(p.finishUpcharges || {blo:10,tung:10,stain:10,waterseal:10}).map(([k,v]) => `${k}: ${v}`).join(', ')} },
   }`).join(',\n');
-  return `// ADMIN EXPORT — replace products array in src/pages/products.tsx\nexport const GENERATED_PRODUCTS = [\n${arr}\n];`;
+  return `// ADMIN EXPORT\n// In src/pages/products.tsx, find "const products: Product[] = [" and replace the entire array with this:\n\nconst products: Product[] = [\n${arr}\n];`;
 }
 
 function generateCutoutsCode(cutouts: typeof initialCutouts) {
@@ -425,7 +425,7 @@ function generateCutoutsCode(cutouts: typeof initialCutouts) {
       { key: 'large', label: 'Large', basePrice: ${c.largePrice}, description: 'Up to 8" tall — finish included' },
     ],
   }`).join(',\n');
-  return `// ADMIN EXPORT — replace products array in src/pages/cedar-cutouts.tsx\nexport const GENERATED_CUTOUTS = [\n${arr}\n];`;
+  return `// ADMIN EXPORT\n// In src/pages/cedar-cutouts.tsx, find "const products: CutoutProduct[] = [" and replace the entire array with this:\n\nconst products: CutoutProduct[] = [\n${arr}\n];`;
 }
 
 function generateBallsCode(balls: typeof initialBalls) {
@@ -436,7 +436,7 @@ function generateBallsCode(balls: typeof initialBalls) {
     image: '/assets/BB-16Inch.png',
     details: ['16" diameter', 'Solid cast construction', 'Weather-resistant'],
   }`).join(',\n');
-  return `// ADMIN EXPORT — replace ballProducts array in src/pages/cement-beach-balls.tsx\nexport const GENERATED_BALLS = [\n${arr}\n];`;
+  return `// ADMIN EXPORT\n// In src/pages/cement-beach-balls.tsx, find "const ballProducts: BallProduct[] = [" and replace the entire array with this:\n\nconst ballProducts: BallProduct[] = [\n${arr}\n];`;
 }
 
 function generateSimpleCode(products: SimpleProduct[], pageName: string, varName: string) {
@@ -448,7 +448,7 @@ function generateSimpleCode(products: SimpleProduct[], pageName: string, varName
     image: '${p.image}',
     description: '${p.description.replace(/'/g, "\\'")}',
   }`).join(',\n');
-  return `// ADMIN EXPORT — ${pageName} products\nexport const ${varName} = [\n${arr}\n];`;
+  return `// ADMIN EXPORT\n// Use this data to populate the ${pageName} page\n\nconst products = [\n${arr}\n];`;
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
