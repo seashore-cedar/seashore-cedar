@@ -9,6 +9,9 @@ import CustomOrdersPage from './pages/custom-orders';
 import AboutPage from './pages/about';
 import OrderPage from './pages/order';
 import ProdNotFoundPage from './pages/_404';
+import AllProductsPage from './pages/all-products';
+import ArtisanEpoxyPage from './pages/artisan-epoxy';
+import YardSalePage from './pages/yard-sale';
 
 export const routes: RouteObject[] = [
   { path: '/', element: <HomePage /> },
@@ -20,6 +23,9 @@ export const routes: RouteObject[] = [
   { path: '/custom-orders', element: <CustomOrdersPage /> },
   { path: '/order', element: <OrderPage /> },
   { path: '/about', element: <AboutPage /> },
+  { path: '/all-products', element: <AllProductsPage /> },
+  { path: '/artisan-epoxy', element: <ArtisanEpoxyPage /> },
+  { path: '/yard-sale', element: <YardSalePage /> },
   { path: '*', element: <ProdNotFoundPage /> },
 ];
 

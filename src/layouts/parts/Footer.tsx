@@ -51,7 +51,9 @@ export default function Footer() {
             <h4 className="text-xs font-semibold tracking-widest uppercase opacity-50 mb-5">Shop</h4>
             <nav className="flex flex-col gap-3">
               {[
-                { href: '/products', label: 'All Products' },
+                { href: '/all-products', label: 'All Products' },
+                { href: '/artisan-epoxy', label: 'Artisan Epoxy' },
+                { href: '/yard-sale', label: 'Yard Sale' },
                 { href: '/products#planters', label: 'Planter Boxes' },
                 { href: '/products#cedar-goods', label: 'Cedar Goods' },
                 { href: '/custom-orders', label: 'Custom Engraving' },

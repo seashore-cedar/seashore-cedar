@@ -3,9 +3,12 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
 const shopItems = [
+  { href: '/all-products', label: 'All Products' },
   { href: '/products', label: 'Cedar Planter Boxes' },
   { href: '/cedar-cutouts', label: 'Cedar Cutouts' },
   { href: '/cement-beach-balls', label: 'Cement Beach Balls' },
+  { href: '/artisan-epoxy', label: 'Artisan Epoxy' },
+  { href: '/yard-sale', label: 'Yard Sale' },
 ];
 
 const navItems = [
