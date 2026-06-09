@@ -285,14 +285,22 @@ function CutoutsTab({ cutouts, setCutouts }: { cutouts: typeof initialCutouts; s
               ))}
             </div>
           </div>
-          <div className="mt-4">
+          <div className="flex items-center justify-between mt-4">
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input type="checkbox" checked={c.visible} onChange={e => update(c.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
               Show on site
             </label>
+            <button onClick={() => { if (confirm('Remove this cutout?')) setCutouts(cutouts.filter(x => x.id !== c.id) as typeof initialCutouts); }}
+              className="text-xs text-destructive flex items-center gap-1 hover:opacity-75 transition-opacity">
+              <Trash2 size={12} /> Remove
+            </button>
           </div>
         </Section>
       ))}
+      <button onClick={() => setCutouts([...cutouts, { id: `cutout-${Date.now()}`, name: 'New Cutout', smallPrice: 0, mediumPrice: 0, largePrice: 0, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '', description: '', visible: true }] as typeof initialCutouts)}
+        className="inline-flex items-center gap-2 px-4 py-2.5 rounded border border-dashed border-border text-sm text-muted-foreground hover:text-foreground hover:border-primary transition-colors">
+        <Plus size={14} /> Add Cutout
+      </button>
     </div>
   );
 }
