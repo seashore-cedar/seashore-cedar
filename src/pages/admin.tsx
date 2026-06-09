@@ -19,16 +19,16 @@ const initialPlanters = [
 ];
 
 const initialCutouts = [
-  { id: 'single-letter', name: 'Single Letter', smallPrice: 14, mediumPrice: 24, largePrice: 34, description: 'A single cedar letter, hand-cut and planed smooth.', visible: true },
-  { id: 'two-letter', name: '2-Letter Set', smallPrice: 24, mediumPrice: 39, largePrice: 54, description: 'Two cedar letters cut as a matched set.', visible: true },
-  { id: 'three-letter', name: '3-Letter Set', smallPrice: 29, mediumPrice: 49, largePrice: 69, description: 'Three cedar letters as a matched set.', visible: true },
-  { id: 'nautical-motif', name: 'Nautical & Beach Motif', smallPrice: 19, mediumPrice: 34, largePrice: 49, description: 'Hand-cut cedar shapes inspired by the coast.', visible: true },
+  { id: 'single-letter', name: 'Single Letter', smallPrice: 14, mediumPrice: 24, largePrice: 34, image: '/assets/customengraved2.png', description: 'A single cedar letter, hand-cut and planed smooth.', visible: true },
+  { id: 'two-letter', name: '2-Letter Set', smallPrice: 24, mediumPrice: 39, largePrice: 54, image: '/assets/customengraved2.png', description: 'Two cedar letters cut as a matched set.', visible: true },
+  { id: 'three-letter', name: '3-Letter Set', smallPrice: 29, mediumPrice: 49, largePrice: 69, image: '/assets/customengraved2.png', description: 'Three cedar letters as a matched set.', visible: true },
+  { id: 'nautical-motif', name: 'Nautical & Beach Motif', smallPrice: 19, mediumPrice: 34, largePrice: 49, image: '/assets/customengraved2.png', description: 'Hand-cut cedar shapes inspired by the coast.', visible: true },
 ];
 
 const initialBalls = [
-  { id: 'unpainted', name: 'Unpainted', price: 45 as number | null, visible: true },
-  { id: 'classic-stripe', name: 'Classic 6-Stripe', price: 85 as number | null, visible: true },
-  { id: 'custom-color', name: 'Custom Color', price: null as number | null, visible: true },
+  { id: 'unpainted', name: 'Unpainted', price: 45 as number | null, image: '/assets/BB-16Inch.png', description: 'A 16" diameter solid cement ball in its natural finish. Clean, minimal, and surprisingly striking as a garden accent or coastal yard feature.', visible: true },
+  { id: 'classic-stripe', name: 'Classic 6-Stripe', price: 85 as number | null, image: '/assets/BB-16Inch.png', description: 'The iconic beach ball pattern on a solid 16" cement ball. Finished with a protective clear coat for lasting color and weather resistance.', visible: true },
+  { id: 'custom-color', name: 'Custom Color', price: null as number | null, image: '/assets/BB-16Inch.png', description: 'Want a specific color combination? Reach out through our custom order form and we\'ll let you know if we can accommodate and share pricing personally.', visible: true },
 ];
 
 const initialYardSale: Array<{ id: string; name: string; price: number; image: string; description: string; visible: boolean }> = [];
@@ -236,6 +236,7 @@ function CutoutsTab({ cutouts, setCutouts }: { cutouts: typeof initialCutouts; s
             <Field label="Small Price ($)"><input className={inputClass} type="number" value={c.smallPrice} onChange={e => update(c.id, 'smallPrice', Number(e.target.value))} /></Field>
             <Field label="Medium Price ($)"><input className={inputClass} type="number" value={c.mediumPrice} onChange={e => update(c.id, 'mediumPrice', Number(e.target.value))} /></Field>
             <Field label="Large Price ($)"><input className={inputClass} type="number" value={c.largePrice} onChange={e => update(c.id, 'largePrice', Number(e.target.value))} /></Field>
+            <Field label="Image Path"><input className={inputClass} value={(c as any).image || ''} onChange={e => update(c.id, 'image', e.target.value)} placeholder="/assets/your-image.png" /></Field>
           </div>
           <Field label="Description">
             <textarea className={inputClass + ' resize-none'} rows={2} value={c.description} onChange={e => update(c.id, 'description', e.target.value)} />
@@ -262,13 +263,17 @@ function BallsTab({ balls, setBalls }: { balls: typeof initialBalls; setBalls: (
     <div className="flex flex-col gap-4">
       {balls.map(b => (
         <Section key={b.id} title={b.name}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <Field label="Name"><input className={inputClass} value={b.name} onChange={e => update(b.id, 'name', e.target.value)} /></Field>
             <Field label="Price ($) — 0 = Contact us">
               <input className={inputClass} type="number" value={b.price ?? 0}
                 onChange={e => update(b.id, 'price', Number(e.target.value) === 0 ? null : Number(e.target.value))} />
             </Field>
+            <Field label="Image Path"><input className={inputClass} value={(b as any).image || ''} onChange={e => update(b.id, 'image', e.target.value)} placeholder="/assets/your-image.png" /></Field>
           </div>
+          <Field label="Description">
+            <textarea className={inputClass + ' resize-none'} rows={3} value={(b as any).description || ''} onChange={e => update(b.id, 'description', e.target.value)} />
+          </Field>
           <div className="mt-4">
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input type="checkbox" checked={b.visible} onChange={e => update(b.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
