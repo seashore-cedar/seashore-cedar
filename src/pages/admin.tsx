@@ -334,7 +334,7 @@ function ImagesTab() {
       <div className="rounded border-2 border-dashed border-border p-8 text-center">
         <Upload size={24} className="text-muted-foreground mx-auto mb-3" />
         <p className="text-sm text-foreground font-semibold mb-1">Upload product images</p>
-        <p className="text-xs text-muted-foreground mb-4">PNG, JPG up to 10MB each. Files will be saved to <code className="bg-muted px-1 rounded">public/assets/</code></p>
+        <p className="text-xs text-muted-foreground mb-4">PNG or JPG · Recommended: 1200–1600px wide, under 500KB · Max 10MB · Best ratio for product cards: 4:3 (e.g. 1200×900px) · Files go in <code className="bg-muted px-1 rounded">public/assets/</code></p>
         <input ref={inputRef} type="file" accept="image/*" multiple className="hidden"
           onChange={e => handleFiles(e.target.files)} />
         <button onClick={() => inputRef.current?.click()}
