@@ -74,7 +74,7 @@ function HeroSection() {
 
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
             <Link
-              to="/products"
+              to="/all-products"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
               
               Shop Products <ArrowRight size={16} />
@@ -354,7 +354,7 @@ function CTASection() {
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
             <Link
-              to="/products"
+              to="/all-products"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
               
               Shop Products <ArrowRight size={16} />
