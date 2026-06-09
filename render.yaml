@@ -27,5 +27,7 @@ services:
         sync: false
       - key: VITE_RECAPTCHA_SITE_KEY
         sync: false
+      - key: VITE_ADMIN_PASSWORD
+        sync: false
       - key: BREVO_API_KEY
         sync: false
