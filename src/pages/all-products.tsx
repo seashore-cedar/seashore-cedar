@@ -36,6 +36,13 @@ const categories = [
     label: 'Shop Cement Beach Balls',
   },
   {
+    title: 'Custom Orders',
+    description: 'Have something specific in mind? We love a challenge. Submit a custom order request and we\'ll work with you to bring your idea to life — from custom dimensions to personalized engravings.',
+    image: '/assets/customengraved.png',
+    href: '/custom-orders',
+    label: 'Request a Custom Order',
+  },
+  {
     title: 'Artisan Epoxy',
     description: 'Coming soon — unique epoxy resin creations with a coastal twist. Stay tuned for new additions to our collection.',
     image: '/assets/background-header_WW.png',
