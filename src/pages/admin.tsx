@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Helmet } from '@dr.pogodin/react-helmet';
-import { Lock, LogOut, Save, Download, ChevronDown, ChevronUp, Package, Scissors, Circle, Image, Type, Plus, Trash2, AlertCircle, CheckCircle, Upload, Tag, Sparkles } from 'lucide-react';
+import { Lock, LogOut, Save, Download, ChevronDown, ChevronUp, Package, Scissors, Circle, Image, Type, Plus, Trash2, AlertCircle, CheckCircle, Upload, Tag, Sparkles, LayoutGrid } from 'lucide-react';
 
 // ─── Auth ─────────────────────────────────────────────────────────────────────
 
@@ -31,6 +31,18 @@ const initialBalls = [
   { id: 'custom-color', name: 'Custom Color', price: null as number | null, image: '/assets/BB-16Inch.png', description: 'Want a specific color combination? Reach out through our custom order form and we\'ll let you know if we can accommodate and share pricing personally.', visible: true },
 ];
 
+const initialGallery = [
+  { id: 'gallery-1', image: '/assets/Boxes ABC w dimensions.png', caption: 'Box ABC Set — three graduated cedar planters', category: 'Planter Boxes', visible: true },
+  { id: 'gallery-2', image: '/assets/Box H.png', caption: 'Box H — tall long-format cedar planter', category: 'Planter Boxes', visible: true },
+  { id: 'gallery-3', image: '/assets/Box G.png', caption: 'Box G — wide cedar planter', category: 'Planter Boxes', visible: true },
+  { id: 'gallery-4', image: '/assets/BB-16Inch.png', caption: '16" cement beach ball', category: 'Cement Beach Balls', visible: true },
+  { id: 'gallery-5', image: '/assets/customengraved2.png', caption: 'Custom cedar engraving', category: 'Cedar Cutouts', visible: true },
+  { id: 'gallery-6', image: '/assets/customengraved.png', caption: 'Personalized engraved cutting board', category: 'Cedar Cutouts', visible: true },
+  { id: 'gallery-7', image: '/assets/Box M w dimensions.png', caption: 'Box M — compact cedar planter', category: 'Planter Boxes', visible: true },
+  { id: 'gallery-8', image: '/assets/Box Q.png', caption: 'Box Q — tabletop cedar planter', category: 'Planter Boxes', visible: true },
+  { id: 'gallery-9', image: '/assets/Glued_Joints.png', caption: 'Handcrafted cedar joinery', category: 'Details', visible: true },
+];
+
 const initialYardSale: Array<{ id: string; name: string; price: number; image: string; description: string; visible: boolean }> = [];
 
 const initialEpoxy: Array<{ id: string; name: string; price: number; image: string; description: string; visible: boolean }> = [];
@@ -38,7 +50,7 @@ const initialEpoxy: Array<{ id: string; name: string; price: number; image: stri
 // Finish labels for display
 const finishLabels: Record<string, string> = { blo: 'Boiled Linseed Oil', tung: 'Tung Oil', stain: 'Exterior Stain', waterseal: "Thompson's WaterSeal" };
 
-type Tab = 'planters' | 'cutouts' | 'balls' | 'yardsale' | 'epoxy' | 'images';
+type Tab = 'planters' | 'cutouts' | 'balls' | 'yardsale' | 'epoxy' | 'gallery' | 'images';
 
 // ─── Login Screen ─────────────────────────────────────────────────────────────
 
@@ -326,18 +338,110 @@ function BallsTab({ balls, setBalls }: { balls: typeof initialBalls; setBalls: (
           <Field label="Description">
             <textarea className={inputClass + ' resize-none'} rows={3} value={(b as any).description || ''} onChange={e => update(b.id, 'description', e.target.value)} />
           </Field>
-          <div className="mt-4">
+          <div className="flex items-center justify-between mt-4">
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input type="checkbox" checked={b.visible} onChange={e => update(b.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
               Show on site
             </label>
+            <button onClick={() => { if (confirm('Remove this ball?')) setBalls(balls.filter(x => x.id !== b.id) as typeof initialBalls); }}
+              className="text-xs text-destructive flex items-center gap-1 hover:opacity-75 transition-opacity">
+              <Trash2 size={12} /> Remove
+            </button>
           </div>
         </Section>
       ))}
+      <button onClick={() => setBalls([...balls, { id: `ball-${Date.now()}`, name: 'New Ball', price: 0 as number | null, image: '/assets/BB-16Inch.png', description: '', visible: true }] as typeof initialBalls)}
+        className="inline-flex items-center gap-2 px-4 py-2.5 rounded border border-dashed border-border text-sm text-muted-foreground hover:text-foreground hover:border-primary transition-colors">
+        <Plus size={14} /> Add Ball
+      </button>
     </div>
   );
 }
 
+
+// ─── Gallery Tab ──────────────────────────────────────────────────────────────
+
+type GalleryItem = typeof initialGallery[0] & { category?: string };
+
+function GalleryTab({ gallery, setGallery }: { gallery: GalleryItem[]; setGallery: (g: GalleryItem[]) => void }) {
+  function update(id: string, field: keyof GalleryItem, value: string | boolean) {
+    setGallery(gallery.map(g => g.id === id ? { ...g, [field]: value } : g));
+  }
+  function add() {
+    setGallery([...gallery, { id: `gallery-${Date.now()}`, image: '', caption: '', visible: true }]);
+  }
+  function remove(id: string) {
+    if (confirm('Remove this gallery item?')) setGallery(gallery.filter(g => g.id !== id));
+  }
+
+  return (
+    <div className="flex flex-col gap-4">
+      <p className="text-xs text-muted-foreground">Add, remove, or update captions for gallery photos. Upload images first using the Images tab, then paste the path here.</p>
+      {gallery.map((g, i) => (
+        <div key={g.id} className="rounded border border-border p-4 flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Photo {i + 1}</span>
+            <button onClick={() => remove(g.id)} className="text-xs text-destructive flex items-center gap-1 hover:opacity-75 transition-opacity">
+              <Trash2 size={12} /> Remove
+            </button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Field label="Image Path">
+              <input className={inputClass} value={g.image} onChange={e => update(g.id, 'image', e.target.value)} placeholder="/assets/your-photo.png" />
+            </Field>
+            <Field label="Caption">
+              <input className={inputClass} value={g.caption} onChange={e => update(g.id, 'caption', e.target.value)} placeholder="Description of the photo" />
+            </Field>
+            <Field label="Category">
+              <select className={inputClass} value={(g as any).category || 'Planter Boxes'} onChange={e => update(g.id, 'category' as any, e.target.value)}>
+                <option value="Planter Boxes">Planter Boxes</option>
+                <option value="Cedar Cutouts">Cedar Cutouts</option>
+                <option value="Cement Beach Balls">Cement Beach Balls</option>
+                <option value="Details">Details</option>
+              </select>
+            </Field>
+          </div>
+          {g.image && (
+            <img src={g.image} alt={g.caption} className="h-24 w-auto object-cover rounded border border-border" onError={e => (e.currentTarget.style.display = 'none')} />
+          )}
+          <label className="flex items-center gap-2 text-sm cursor-pointer">
+            <input type="checkbox" checked={g.visible} onChange={e => update(g.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
+            Show in gallery
+          </label>
+        </div>
+      ))}
+      <button onClick={add} className="inline-flex items-center gap-2 px-4 py-2.5 rounded border border-dashed border-border text-sm text-muted-foreground hover:text-foreground hover:border-primary transition-colors">
+        <Plus size={14} /> Add Photo
+      </button>
+    </div>
+  );
+}
+
+function generateGalleryCode(gallery: GalleryItem[]) {
+  const arr = gallery.filter(g => g.visible).map(g => `  {
+    id: '${g.id}',
+    slot: '${g.image}',
+    alt: '${g.caption.replace(/'/g, "\\'")}',
+    category: '${(g as any).category || 'Planter Boxes'}',
+    caption: '${g.caption.replace(/'/g, "\\'")}',
+  }`).join(',\n');
+  return `// ═══════════════════════════════════════════════════
+// ADMIN EXPORT — src/pages/gallery.tsx
+// ═══════════════════════════════════════════════════
+// INSTRUCTIONS:
+// 1. Open src/pages/gallery.tsx
+// 2. Find:  const items: GalleryItem[] = [
+// 3. Select from that line to the closing ];
+// 4. Replace with the array below
+// 5. Update the category field on each item to one of:
+//    'Planter Boxes' | 'Cedar Cutouts' | 'Cement Beach Balls' | 'Details'
+// 6. Save, commit, push to GitHub
+// ═══════════════════════════════════════════════════
+
+const items: GalleryItem[] = [
+${arr}
+];`;
+}
 
 // ─── Images Tab ───────────────────────────────────────────────────────────────
 
@@ -581,6 +685,7 @@ export default function AdminPage() {
   const [planters, setPlanters] = useState(initialPlanters);
   const [cutouts, setCutouts] = useState(initialCutouts);
   const [balls, setBalls] = useState(initialBalls);
+  const [gallery, setGallery] = useState(initialGallery);
   const [yardSale, setYardSale] = useState(initialYardSale);
   const [epoxy, setEpoxy] = useState(initialEpoxy);
   const [saved, setSaved] = useState(false);
@@ -592,6 +697,7 @@ export default function AdminPage() {
       planters: () => downloadFile('ADMIN_products.ts', generateProductsCode(planters)),
       cutouts: () => downloadFile('ADMIN_cutouts.ts', generateCutoutsCode(cutouts)),
       balls: () => downloadFile('ADMIN_balls.ts', generateBallsCode(balls)),
+      gallery: () => downloadFile('ADMIN_gallery.ts', generateGalleryCode(gallery)),
       yardsale: () => downloadFile('ADMIN_yardsale.ts', generateSimpleCode(yardSale, 'Yard Sale', 'GENERATED_YARD_SALE')),
       epoxy: () => downloadFile('ADMIN_epoxy.ts', generateSimpleCode(epoxy, 'Artisan Epoxy', 'GENERATED_EPOXY')),
       images: () => {},
@@ -605,6 +711,7 @@ export default function AdminPage() {
     downloadFile('ADMIN_products.ts', generateProductsCode(planters));
     downloadFile('ADMIN_cutouts.ts', generateCutoutsCode(cutouts));
     downloadFile('ADMIN_balls.ts', generateBallsCode(balls));
+    downloadFile('ADMIN_gallery.ts', generateGalleryCode(gallery));
     if (yardSale.length > 0) downloadFile('ADMIN_yardsale.ts', generateSimpleCode(yardSale, 'Yard Sale', 'GENERATED_YARD_SALE'));
     if (epoxy.length > 0) downloadFile('ADMIN_epoxy.ts', generateSimpleCode(epoxy, 'Artisan Epoxy', 'GENERATED_EPOXY'));
     setSaved(true);
@@ -617,6 +724,7 @@ export default function AdminPage() {
     { key: 'balls', label: 'Cement Balls', icon: <Circle size={14} /> },
     { key: 'yardsale', label: 'Yard Sale', icon: <Tag size={14} /> },
     { key: 'epoxy', label: 'Artisan Epoxy', icon: <Sparkles size={14} /> },
+    { key: 'gallery', label: 'Gallery', icon: <LayoutGrid size={14} /> },
     { key: 'images', label: 'Images', icon: <Image size={14} /> },
   ];
 
@@ -677,6 +785,7 @@ export default function AdminPage() {
           {tab === 'planters' && <PlantersTab planters={planters} setPlanters={setPlanters} />}
           {tab === 'cutouts' && <CutoutsTab cutouts={cutouts} setCutouts={setCutouts} />}
           {tab === 'balls' && <BallsTab balls={balls} setBalls={setBalls} />}
+          {tab === 'gallery' && <GalleryTab gallery={gallery} setGallery={setGallery} />}
           {tab === 'yardsale' && <SimpleProductTab products={yardSale} setProducts={setYardSale} emptyLabel="yard sale" />}
           {tab === 'epoxy' && <SimpleProductTab products={epoxy} setProducts={setEpoxy} emptyLabel="artisan epoxy" />}
           {tab === 'images' && <ImagesTab />}
