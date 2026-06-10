@@ -417,9 +417,22 @@ function generateProductsCode(planters: typeof initialPlanters) {
     bestFor: [],
     image: '${p.image}',
     imageAlt: '${p.name} cedar planter',
-    finishUpcharges: { none: 0, ${Object.entries(p.finishUpcharges || {blo:10,tung:10,stain:10,waterseal:10}).map(([k,v]) => `${k}: ${v}`).join(', ')} },
+    finishUpcharges: { none: 0, ${Object.entries((p as any).finishUpcharges || {blo:10,tung:10,stain:10,waterseal:10}).map(([k,v]) => `${k}: ${v}`).join(', ')} },
   }`).join(',\n');
-  return `// ADMIN EXPORT\n// In src/pages/products.tsx, find "const products: Product[] = [" and replace the entire array with this:\n\nconst products: Product[] = [\n${arr}\n];`;
+  return `// ═══════════════════════════════════════════════════
+// ADMIN EXPORT — src/pages/products.tsx
+// ═══════════════════════════════════════════════════
+// INSTRUCTIONS:
+// 1. Open src/pages/products.tsx in a text editor
+// 2. Find this line:  const products: Product[] = [
+// 3. Select from that line down to the closing ];
+// 4. Replace ONLY that section with the array below
+// 5. Save, commit, push to GitHub
+// ═══════════════════════════════════════════════════
+
+const products: Product[] = [
+${arr}
+];`;
 }
 
 function generateCutoutsCode(cutouts: typeof initialCutouts) {
@@ -433,18 +446,110 @@ function generateCutoutsCode(cutouts: typeof initialCutouts) {
       { key: 'large', label: 'Large', basePrice: ${c.largePrice}, description: 'Up to 8" tall — finish included' },
     ],
   }`).join(',\n');
-  return `// ADMIN EXPORT\n// In src/pages/cedar-cutouts.tsx, find "const products: CutoutProduct[] = [" and replace the entire array with this:\n\nconst products: CutoutProduct[] = [\n${arr}\n];`;
+  return `// ═══════════════════════════════════════════════════
+// ADMIN EXPORT — src/pages/cedar-cutouts.tsx
+// ═══════════════════════════════════════════════════
+// INSTRUCTIONS:
+// 1. Open src/pages/cedar-cutouts.tsx in a text editor
+// 2. Find this line:  const cutoutProducts: CutoutProduct[] = [
+// 3. Select from that line down to the closing ];
+// 4. Replace ONLY that section with the array below
+// 5. Save, commit, push to GitHub
+// ═══════════════════════════════════════════════════
+
+const cutoutProducts: CutoutProduct[] = [
+\${arr}
+];`;
 }
 
 function generateBallsCode(balls: typeof initialBalls) {
   const arr = balls.filter(b => b.visible).map(b => `  {
     id: '${b.id}',
     name: '${b.name}',
+    description: "${((b as any).description || '').replace(/"/g, '\\"')}",
     price: ${b.price === null ? 'null' : b.price},
-    image: '/assets/BB-16Inch.png',
-    details: ['16" diameter', 'Solid cast construction', 'Weather-resistant'],
+    image: '${(b as any).image || '/assets/BB-16Inch.png'}',
+    details: ['16\" diameter', 'Solid cast construction', 'Weather-resistant'],
   }`).join(',\n');
-  return `// ADMIN EXPORT\n// In src/pages/cement-beach-balls.tsx, find "const ballProducts: BallProduct[] = [" and replace the entire array with this:\n\nconst ballProducts: BallProduct[] = [\n${arr}\n];`;
+  return `// ADMIN EXPORT
+// Replace the ENTIRE contents of src/pages/cement-beach-balls.tsx with this file:
+
+import { motion } from 'motion/react';
+import { Helmet } from '@dr.pogodin/react-helmet';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Check } from 'lucide-react';
+
+const fadeUp = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' as const } } } as const;
+const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } } as const;
+
+interface BallProduct { id: string; name: string; description: string; price: number | null; image: string; badge?: string; details: string[]; }
+
+const ballProducts: BallProduct[] = [
+${arr}
+];
+
+function BallProductCard({ product }: { product: BallProduct }) {
+  const orderParams = new URLSearchParams({ product: product.name, dimensions: '16" diameter', finish: 'Painted with clear coat' });
+  return (
+    <motion.div variants={fadeUp} className="flex flex-col rounded border border-border overflow-hidden" style={{ background: 'hsl(var(--background))' }}>
+      <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
+        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+        {product.badge && <span className="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full bg-primary text-primary-foreground">{product.badge}</span>}
+      </div>
+      <div className="flex flex-col flex-1 p-5">
+        <h3 className="font-heading text-xl text-foreground mb-2" style={{ letterSpacing: '-0.01em' }}>{product.name}</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{product.description}</p>
+        <ul className="mb-5 flex flex-col gap-1.5">
+          {product.details.map(detail => (
+            <li key={detail} className="flex items-center gap-2 text-xs text-muted-foreground"><Check size={12} className="text-primary shrink-0" />{detail}</li>
+          ))}
+        </ul>
+        <div className="flex items-center justify-between py-3 px-4 rounded bg-muted mb-5">
+          <span className="text-sm text-muted-foreground">Price</span>
+          {product.price !== null ? <span className="text-lg font-bold text-foreground">\${product.price}</span> : <span className="text-sm text-muted-foreground italic">Contact us for pricing</span>}
+        </div>
+        <Link to={product.id === 'custom-color' ? \`/custom-orders?product=\${encodeURIComponent(product.name)}\` : \`/order?\${orderParams.toString()}\`}
+          className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+          {product.id === 'custom-color' ? 'Request Custom Order' : \`Order — \$\${product.price}\`}<ArrowRight size={15} />
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function CementBeachBallsPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Cement Beach Balls — Seashore Cedar</title>
+        <meta name="description" content='16" solid cement beach balls — unpainted or classic 6-stripe. Made in Wildwood, NJ.' />
+      </Helmet>
+      <section className="relative py-14 md:py-18 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/assets/background-header_WW.png" alt="" aria-hidden="true" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/75 via-stone-900/55 to-stone-900/75" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-[0.25em] uppercase mb-3" style={{ color: 'hsl(var(--primary) / 0.9)' }}>Seashore Cedar</motion.p>
+            <motion.h1 variants={fadeUp} className="font-heading text-4xl md:text-5xl text-white mb-3" style={{ letterSpacing: '-0.02em' }}>Cement Beach Balls</motion.h1>
+            <motion.p variants={fadeUp} className="text-white/70 text-sm md:text-base max-w-xl mx-auto">Solid 16" cast cement beach balls — a playful coastal accent for gardens, patios, and porches. All painted balls include a protective clear coat.</motion.p>
+          </motion.div>
+        </div>
+      </section>
+      <section className="py-16 md:py-24" style={{ background: 'hsl(var(--background))' }}>
+        <div className="container mx-auto px-6">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {ballProducts.map(product => <BallProductCard key={product.id} product={product} />)}
+          </motion.div>
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-center text-xs text-muted-foreground mt-8">
+            Free local pickup · Wildwood, NJ · Allow 4–5 business days
+          </motion.p>
+        </div>
+      </section>
+    </>
+  );
+}`;
 }
 
 function generateSimpleCode(products: SimpleProduct[], pageName: string, varName: string) {
@@ -456,7 +561,16 @@ function generateSimpleCode(products: SimpleProduct[], pageName: string, varName
     image: '${p.image}',
     description: '${p.description.replace(/'/g, "\\'")}',
   }`).join(',\n');
-  return `// ADMIN EXPORT\n// Use this data to populate the ${pageName} page\n\nconst products = [\n${arr}\n];`;
+  return `// ═══════════════════════════════════════════════════
+// ADMIN EXPORT — ${pageName}
+// ═══════════════════════════════════════════════════
+// Send this file to your developer to add these
+// products to the ${pageName} page.
+// ═══════════════════════════════════════════════════
+
+const products = [
+\${arr}
+];`;
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
