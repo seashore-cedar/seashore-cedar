@@ -22,93 +22,77 @@ interface GalleryItem {
 // ─── Gallery Data ─────────────────────────────────────────────────────────────
 
 const items: GalleryItem[] = [
-{
-  id: 'planter-patio-1',
-  slot: '/assets/Boxes ABC w dimensions.png',
-  alt: 'Cedar planter box on a sunny patio',
-  category: 'Planter Boxes',
-  caption: 'Box G — 16×48×16" on a coastal patio',
-  link: '/products',
-  linkLabel: 'Shop Planter Boxes',
-  span: 'wide'
-},
-{
-  id: 'planter-tall',
-  slot: '/assets/Box H.png',
-  alt: 'Tall cedar planter with lush plants',
-  category: 'Planter Boxes',
-  caption: 'Box H — 16×48×32" with summer plantings',
-  link: '/products',
-  linkLabel: 'Shop Planter Boxes',
-  span: 'tall'
-},
-{
-  id: 'planter-herbs',
-  slot: '/assets/Box G.png',
-  alt: 'Cedar planter box with kitchen herbs',
-  category: 'Planter Boxes',
-  caption: 'Box M — 16×12×13" herb garden',
-  link: '/products',
-  linkLabel: 'Shop Planter Boxes'
-},
-{
-  id: 'wood-engraving',
-  slot: '/assets/Box C.png',
-  alt: 'Hand-engraved cedar letters',
-  category: 'Cedar Cutouts',
-  caption: 'Town letters — custom engraved cedar',
-  link: '/cedar-cutouts',
-  linkLabel: 'Shop Cedar Cutouts',
-  span: 'wide'
-},
-{
-  id: 'wood-cutout-nautical',
-  slot: '/assets/Box A w dimensions.png',
-  alt: 'Nautical wood cutout anchor motif',
-  category: 'Cedar Cutouts',
-  caption: 'Nautical motif — anchor cutout, natural finish',
-  link: '/cedar-cutouts',
-  linkLabel: 'Shop Cedar Cutouts',
-  span: 'tall'
-},
-{
-  id: 'coastal-decor',
-  slot: '/assets/background-header_WW.png',
-  alt: 'Coastal home decor with cedar pieces',
-  category: 'Cedar Cutouts',
-  caption: 'Coastal combo set — letters + nautical motif',
-  link: '/cedar-cutouts',
-  linkLabel: 'Shop Cedar Cutouts'
-},
-{
-  id: 'cement-ball-garden',
-  slot: '/assets/BB-16Inch.png',
-  alt: 'Cement beach ball garden accent',
-  category: 'Cement Beach Balls',
-  caption: '16" cement beach ball — classic stripe finish',
-  link: '/cement-beach-balls',
-  linkLabel: 'Shop Cement Beach Balls',
-  span: 'wide'
-},
-{
-  id: 'planter-patio-2',
-  slot: '/assets/Box M w dimensions.png',
-  alt: 'Cedar planter boxes in a garden setting',
-  category: 'Planter Boxes',
-  caption: 'Box ABC set — three sizes, BLO finish',
-  link: '/products',
-  linkLabel: 'Shop Planter Boxes'
-},
-{
-  id: 'woodworking-detail',
-  slot: '/assets/Box Q.png',
-  alt: 'Close-up of cedar wood grain and joinery',
-  category: 'Details',
-  caption: 'Hand-sanded cedar — every board finished by hand',
-  link: '/products',
-  linkLabel: 'See All Products'
-}];
-
+  {
+    id: 'gallery-1',
+    slot: '/assets/Boxes ABC w dimensions.png',
+    alt: 'Box ABC Set — three graduated cedar planters',
+    category: 'Planter Boxes',
+    caption: 'Box ABC Set — three graduated cedar planters',
+  },
+  {
+    id: 'gallery-2',
+    slot: '/assets/Box H.png',
+    alt: 'Box H — tall long-format cedar planter',
+    category: 'Planter Boxes',
+    caption: 'Box H — tall long-format cedar planter',
+  },
+  {
+    id: 'gallery-3',
+    slot: '/assets/Box G.png',
+    alt: 'Box G — wide cedar planter',
+    category: 'Planter Boxes',
+    caption: 'Box G — wide cedar planter',
+  },
+  {
+    id: 'gallery-4',
+    slot: '/assets/BB-16Inch.png',
+    alt: '16" cement beach ball',
+    category: 'Cement Beach Balls',
+    caption: '16" cement beach ball',
+  },
+  {
+    id: 'gallery-5',
+    slot: '/assets/customengraved2.png',
+    alt: 'Custom cedar engraving',
+    category: 'Cedar Cutouts',
+    caption: 'Custom cedar engraving',
+  },
+  {
+    id: 'gallery-6',
+    slot: '/assets/customengraved.png',
+    alt: 'Personalized engraved cutting board',
+    category: 'Cedar Cutouts',
+    caption: 'Personalized engraved cutting board',
+  },
+  {
+    id: 'gallery-7',
+    slot: '/assets/Box M w dimensions.png',
+    alt: 'Box M — compact cedar planter',
+    category: 'Planter Boxes',
+    caption: 'Box M — compact cedar planter',
+  },
+  {
+    id: 'gallery-8',
+    slot: '/assets/Box Q.png',
+    alt: 'Box Q — tabletop cedar planter',
+    category: 'Planter Boxes',
+    caption: 'Box Q — tabletop cedar planter',
+  },
+  {
+    id: 'gallery-9',
+    slot: '/assets/Glued_Joints.png',
+    alt: 'Handcrafted cedar joinery',
+    category: 'Details',
+    caption: 'Handcrafted cedar joinery',
+  },
+  {
+    id: 'gallery-1781444686083',
+    slot: '/assets/3-Picket-Planter-Wildwood-W.jpg',
+    alt: 'Box A - Wildwood Logo - Boiled Linseed Oil Finish ',
+    category: 'Planter Boxes',
+    caption: 'Box A - Wildwood Logo - Boiled Linseed Oil Finish ',
+  }
+];
 
 const categories: Category[] = ['All', 'Planter Boxes', 'Cedar Cutouts', 'Cement Beach Balls', 'Details'];
 
