@@ -3,96 +3,17 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Helmet } from '@dr.pogodin/react-helmet';
 import { X, ZoomIn, Link as LinkIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { galleryItems, type GalleryItem, type GalleryCategory } from '../data/galleryItems';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Category = 'All' | 'Planter Boxes' | 'Cedar Cutouts' | 'Cement Beach Balls' | 'Details';
-
-interface GalleryItem {
-  id: string;
-  slot: string;
-  alt: string;
-  category: Exclude<Category, 'All'>;
-  caption: string;
-  link?: string;
-  linkLabel?: string;
-  span?: 'wide' | 'tall' | 'normal';
-}
+type Category = 'All' | GalleryCategory;
 
 // ─── Gallery Data ─────────────────────────────────────────────────────────────
+// Source data lives in src/data/galleryItems.ts (shared with the admin panel).
+// Only items with visible !== false are shown here.
 
-const items: GalleryItem[] = [
-  {
-    id: 'gallery-1',
-    slot: '/assets/Boxes ABC w dimensions.png',
-    alt: 'Box ABC Set — three graduated cedar planters',
-    category: 'Planter Boxes',
-    caption: 'Box ABC Set — three graduated cedar planters',
-  },
-  {
-    id: 'gallery-2',
-    slot: '/assets/Box H.png',
-    alt: 'Box H — tall long-format cedar planter',
-    category: 'Planter Boxes',
-    caption: 'Box H — tall long-format cedar planter',
-  },
-  {
-    id: 'gallery-3',
-    slot: '/assets/Box G.png',
-    alt: 'Box G — wide cedar planter',
-    category: 'Planter Boxes',
-    caption: 'Box G — wide cedar planter',
-  },
-  {
-    id: 'gallery-4',
-    slot: '/assets/BB-16Inch.png',
-    alt: '16" cement beach ball',
-    category: 'Cement Beach Balls',
-    caption: '16" cement beach ball',
-  },
-  {
-    id: 'gallery-5',
-    slot: '/assets/customengraved2.png',
-    alt: 'Custom cedar engraving',
-    category: 'Cedar Cutouts',
-    caption: 'Custom cedar engraving',
-  },
-  {
-    id: 'gallery-6',
-    slot: '/assets/customengraved.png',
-    alt: 'Personalized engraved cutting board',
-    category: 'Cedar Cutouts',
-    caption: 'Personalized engraved cutting board',
-  },
-  {
-    id: 'gallery-7',
-    slot: '/assets/Box M w dimensions.png',
-    alt: 'Box M — compact cedar planter',
-    category: 'Planter Boxes',
-    caption: 'Box M — compact cedar planter',
-  },
-  {
-    id: 'gallery-8',
-    slot: '/assets/Box Q.png',
-    alt: 'Box Q — tabletop cedar planter',
-    category: 'Planter Boxes',
-    caption: 'Box Q — tabletop cedar planter',
-  },
-  {
-    id: 'gallery-9',
-    slot: '/assets/Glued_Joints.png',
-    alt: 'Handcrafted cedar joinery',
-    category: 'Details',
-    caption: 'Handcrafted cedar joinery',
-  },
-  {
-    id: 'gallery-1781444686083',
-    slot: '/assets/3-Picket-Planter-Wildwood-W.jpg',
-    alt: 'Box A - Wildwood Logo - Boiled Linseed Oil Finish ',
-    category: 'Planter Boxes',
-    caption: 'Box A - Wildwood Logo - Boiled Linseed Oil Finish ',
-  }
-];
+const items: GalleryItem[] = galleryItems.filter((item) => item.visible !== false);
 
 const categories: Category[] = ['All', 'Planter Boxes', 'Cedar Cutouts', 'Cement Beach Balls', 'Details'];
 

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Helmet } from '@dr.pogodin/react-helmet';
 import { Lock, LogOut, Save, Download, ChevronDown, ChevronUp, Package, Scissors, Circle, Image, Type, Plus, Trash2, AlertCircle, CheckCircle, Upload, Tag, Sparkles, LayoutGrid } from 'lucide-react';
+import { galleryItems as initialGallery, type GalleryItem } from '../data/galleryItems';
 
 // ─── Auth ─────────────────────────────────────────────────────────────────────
 
@@ -29,18 +30,6 @@ const initialBalls = [
   { id: 'unpainted', name: 'Unpainted', price: 45 as number | null, image: '/assets/BB-16Inch.png', description: 'A 16" diameter solid cement ball in its natural finish. Clean, minimal, and surprisingly striking as a garden accent or coastal yard feature.', visible: true },
   { id: 'classic-stripe', name: 'Classic 6-Stripe', price: 85 as number | null, image: '/assets/BB-16Inch.png', description: 'The iconic beach ball pattern on a solid 16" cement ball. Finished with a protective clear coat for lasting color and weather resistance.', visible: true },
   { id: 'custom-color', name: 'Custom Color', price: null as number | null, image: '/assets/BB-16Inch.png', description: 'Want a specific color combination? Reach out through our custom order form and we\'ll let you know if we can accommodate and share pricing personally.', visible: true },
-];
-
-const initialGallery = [
-  { id: 'gallery-1', image: '/assets/Boxes ABC w dimensions.png', caption: 'Box ABC Set — three graduated cedar planters', category: 'Planter Boxes', visible: true },
-  { id: 'gallery-2', image: '/assets/Box H.png', caption: 'Box H — tall long-format cedar planter', category: 'Planter Boxes', visible: true },
-  { id: 'gallery-3', image: '/assets/Box G.png', caption: 'Box G — wide cedar planter', category: 'Planter Boxes', visible: true },
-  { id: 'gallery-4', image: '/assets/BB-16Inch.png', caption: '16" cement beach ball', category: 'Cement Beach Balls', visible: true },
-  { id: 'gallery-5', image: '/assets/customengraved2.png', caption: 'Custom cedar engraving', category: 'Cedar Cutouts', visible: true },
-  { id: 'gallery-6', image: '/assets/customengraved.png', caption: 'Personalized engraved cutting board', category: 'Cedar Cutouts', visible: true },
-  { id: 'gallery-7', image: '/assets/Box M w dimensions.png', caption: 'Box M — compact cedar planter', category: 'Planter Boxes', visible: true },
-  { id: 'gallery-8', image: '/assets/Box Q.png', caption: 'Box Q — tabletop cedar planter', category: 'Planter Boxes', visible: true },
-  { id: 'gallery-9', image: '/assets/Glued_Joints.png', caption: 'Handcrafted cedar joinery', category: 'Details', visible: true },
 ];
 
 const initialYardSale: Array<{ id: string; name: string; price: number; image: string; description: string; visible: boolean }> = [];
@@ -361,14 +350,12 @@ function BallsTab({ balls, setBalls }: { balls: typeof initialBalls; setBalls: (
 
 // ─── Gallery Tab ──────────────────────────────────────────────────────────────
 
-type GalleryItem = typeof initialGallery[0] & { category?: string };
-
 function GalleryTab({ gallery, setGallery }: { gallery: GalleryItem[]; setGallery: (g: GalleryItem[]) => void }) {
   function update(id: string, field: keyof GalleryItem, value: string | boolean) {
     setGallery(gallery.map(g => g.id === id ? { ...g, [field]: value } : g));
   }
   function add() {
-    setGallery([...gallery, { id: `gallery-${Date.now()}`, image: '', caption: '', visible: true }]);
+    setGallery([...gallery, { id: `gallery-${Date.now()}`, slot: '', alt: '', caption: '', category: 'Planter Boxes', visible: true }]);
   }
   function remove(id: string) {
     if (confirm('Remove this gallery item?')) setGallery(gallery.filter(g => g.id !== id));
@@ -387,13 +374,13 @@ function GalleryTab({ gallery, setGallery }: { gallery: GalleryItem[]; setGaller
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Field label="Image Path">
-              <input className={inputClass} value={g.image} onChange={e => update(g.id, 'image', e.target.value)} placeholder="/assets/your-photo.png" />
+              <input className={inputClass} value={g.slot} onChange={e => update(g.id, 'slot', e.target.value)} placeholder="/assets/your-photo.png" />
             </Field>
             <Field label="Caption">
               <input className={inputClass} value={g.caption} onChange={e => update(g.id, 'caption', e.target.value)} placeholder="Description of the photo" />
             </Field>
             <Field label="Category">
-              <select className={inputClass} value={(g as any).category || 'Planter Boxes'} onChange={e => update(g.id, 'category' as any, e.target.value)}>
+              <select className={inputClass} value={g.category || 'Planter Boxes'} onChange={e => update(g.id, 'category' as any, e.target.value as any)}>
                 <option value="Planter Boxes">Planter Boxes</option>
                 <option value="Cedar Cutouts">Cedar Cutouts</option>
                 <option value="Cement Beach Balls">Cement Beach Balls</option>
@@ -401,11 +388,11 @@ function GalleryTab({ gallery, setGallery }: { gallery: GalleryItem[]; setGaller
               </select>
             </Field>
           </div>
-          {g.image && (
-            <img src={g.image} alt={g.caption} className="h-24 w-auto object-cover rounded border border-border" onError={e => (e.currentTarget.style.display = 'none')} />
+          {g.slot && (
+            <img src={g.slot} alt={g.caption} className="h-24 w-auto object-cover rounded border border-border" onError={e => (e.currentTarget.style.display = 'none')} />
           )}
           <label className="flex items-center gap-2 text-sm cursor-pointer">
-            <input type="checkbox" checked={g.visible} onChange={e => update(g.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
+            <input type="checkbox" checked={g.visible !== false} onChange={e => update(g.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
             Show in gallery
           </label>
         </div>
@@ -418,27 +405,19 @@ function GalleryTab({ gallery, setGallery }: { gallery: GalleryItem[]; setGaller
 }
 
 function generateGalleryCode(gallery: GalleryItem[]) {
-  const arr = gallery.filter(g => g.visible).map(g => `  {
-    id: '${g.id}',
-    slot: '${g.image}',
-    alt: '${g.caption.replace(/'/g, "\\'")}',
-    category: '${(g as any).category || 'Planter Boxes'}',
-    caption: '${g.caption.replace(/'/g, "\\'")}',
-  }`).join(',\n');
+  const arr = gallery.map(g => `  { id: '${g.id}', slot: '${g.slot}', alt: '${(g.alt || g.caption).replace(/'/g, "\\'")}', category: '${g.category || 'Planter Boxes'}', caption: '${g.caption.replace(/'/g, "\\'")}', visible: ${g.visible !== false} },`).join('\n');
   return `// ═══════════════════════════════════════════════════
-// ADMIN EXPORT — src/pages/gallery.tsx
+// ADMIN EXPORT — src/data/galleryItems.ts
 // ═══════════════════════════════════════════════════
 // INSTRUCTIONS:
-// 1. Open src/pages/gallery.tsx
-// 2. Find:  const items: GalleryItem[] = [
+// 1. Open src/data/galleryItems.ts
+// 2. Find:  export const galleryItems: GalleryItem[] = [
 // 3. Select from that line to the closing ];
 // 4. Replace with the array below
-// 5. Update the category field on each item to one of:
-//    'Planter Boxes' | 'Cedar Cutouts' | 'Cement Beach Balls' | 'Details'
-// 6. Save, commit, push to GitHub
+// 5. Save, commit, push to GitHub
 // ═══════════════════════════════════════════════════
 
-const items: GalleryItem[] = [
+export const galleryItems: GalleryItem[] = [
 ${arr}
 ];`;
 }
