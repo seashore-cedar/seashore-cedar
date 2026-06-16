@@ -165,8 +165,7 @@ export default function GalleryPage() {
             <motion.p variants={fadeUp} className="text-xs font-semibold tracking-[0.25em] uppercase mb-3" style={{ color: 'hsl(var(--primary) / 0.9)' }}>
               Made on the Shore
             </motion.p>
-            <motion.h1 variants={fadeUp} className="font-heading text-5xl md:text-6xl text-white mb-4" style={{ letterSpacing: '-0.02em' }}>Our Work - Under Construction COMING SOON
-
+            <motion.h1 variants={fadeUp} className="font-heading text-5xl md:text-6xl text-white mb-4" style={{ letterSpacing: '-0.02em' }}>Our Work
             </motion.h1>
             <motion.p variants={fadeUp} className="text-white/75 text-base md:text-lg max-w-xl mx-auto">
               Every piece is handcrafted with care — browse completed projects, customer installs, and a few behind-the-scenes details.
