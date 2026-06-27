@@ -180,6 +180,7 @@ const products: Product[] = [
     imageAlt: 'Box Q cedar planter',
     finishUpcharges: { none: 0, blo: 10, tung: 10, stain: 10, waterseal: 10 },
   }
+]; 
 // ─── Animation Variants ───────────────────────────────────────────────────────
 
 const fadeUp = {
