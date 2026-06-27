@@ -124,7 +124,7 @@ const products: Product[] = [
     id: 'box-abc',
     price: 110,
     name: 'Box ABC Set',
-    dimensions: 'Box A + Box B (10"W × 10"L × 13"H) + Box C',
+    dimensions: 'Box A + Box C + Box B (10"W × 10"L × 13"H)',
     sqft: 0,
     description: 'Three graduated planters sold as a set. Arrange them on stairs, a deck, or an entryway for a layered, designer look.',
     bestFor: [],
@@ -142,7 +142,7 @@ const products: Product[] = [
     bestFor: [],
     image: '/assets/Box G.png',
     imageAlt: 'Box G cedar planter',
-    finishUpcharges: { none: 0, blo: 10, tung: 15, stain: 10, waterseal: 15 },
+    finishUpcharges: { none: 0, blo: 10, tung: 15, stain: 10, waterseal: 10 },
   },
   {
     id: 'box-h',
@@ -154,7 +154,7 @@ const products: Product[] = [
     bestFor: [],
     image: '/assets/Box H.png',
     imageAlt: 'Box H cedar planter',
-    finishUpcharges: { none: 0, blo: 10, tung: 15, stain: 10, waterseal: 15 },
+    finishUpcharges: { none: 0, blo: 15, tung: 15, stain: 10, waterseal: 15 },
   },
   {
     id: 'box-m',
@@ -178,7 +178,23 @@ const products: Product[] = [
     bestFor: [],
     image: '/assets/Box Q.png',
     imageAlt: 'Box Q cedar planter',
-    finishUpcharges: { none: 0, blo: 5, tung: 7.5, stain: 5, waterseal: 7.5 },
+    finishUpcharges: { none: 0, blo: 10, tung: 10, stain: 10, waterseal: 10 },
+  },
+  {
+    id: 'box-1782570381038',
+    price: 85,
+    name: 'Stand-Tall Nautical Planter — One of a Kind Folk Art Original',
+    dimensions: '28.5"H X ~14W ',
+    sqft: 0,
+    description: 'At nearly 2½ feet tall with a generous ~14" square top, this statement planter commands attention the moment it hits your porch, deck, or garden. Three hand-cut coastal motifs tell the story — a seahorse on the front greets every visitor, a starfish watches the left, and a scallop shell faces right — each one stained in rich nautical blue and built right into the cedar panels.
+The trim carries that same deep blue, while the interior panels are finished in a soft nautical off-white that makes the whole piece pop. And here\'s the practical magic: with 12" of usable planter depth, you\'re not filling a 28" box — your soil sits right where it needs to be, and your plants sit up at the perfect show height.
+Built from naturally rot-resistant western red cedar with exterior-grade stains throughout, this planter is already ready to go — no finishing needed, no waiting. Just drop it in place, add your favorite plants, and let it do the talking.
+This one won\'t be reproduced. It\'s a true folk art original, finished and ready for its forever home.
+Ready to ship or pick up — see more angles in our gallery.',
+    bestFor: [],
+    image: '/assets/tall boy 28.5 front.jpeg',
+    imageAlt: 'Stand-Tall Nautical Planter — One of a Kind Folk Art Original cedar planter',
+    finishUpcharges: { none: 0, blo: 10, tung: 10, stain: 10, waterseal: 10 },
   }
 ];
 
