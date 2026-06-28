@@ -541,7 +541,7 @@ function generateCutoutsCode(cutouts: typeof initialCutouts) {
 // ═══════════════════════════════════════════════════
 
 const cutoutProducts: CutoutProduct[] = [
-\${arr}
+${arr}
 ];`;
 }
 
@@ -652,7 +652,7 @@ function generateSimpleCode(products: SimpleProduct[], pageName: string, varName
 // ═══════════════════════════════════════════════════
 
 const products = [
-\${arr}
+${arr}
 ];`;
 }
 
