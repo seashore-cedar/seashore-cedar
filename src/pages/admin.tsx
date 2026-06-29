@@ -20,16 +20,18 @@ const initialPlanters = [
 ];
 
 const initialCutouts = [
-  { id: 'single-letter', name: 'Single Letter', smallPrice: 14, mediumPrice: 24, largePrice: 34, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'A single cedar letter, hand-cut and planed smooth.', visible: true },
-  { id: 'two-letter', name: '2-Letter Set', smallPrice: 24, mediumPrice: 39, largePrice: 54, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'Two cedar letters cut as a matched set.', visible: true },
-  { id: 'three-letter', name: '3-Letter Set', smallPrice: 29, mediumPrice: 49, largePrice: 69, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'Three cedar letters as a matched set.', visible: true },
-  { id: 'nautical-motif', name: 'Nautical & Beach Motif', smallPrice: 19, mediumPrice: 34, largePrice: 49, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'Hand-cut cedar shapes inspired by the coast.', visible: true },
+  { id: 'single-letter', name: 'Single Letter', smallPrice: 15, mediumPrice: 22, largePrice: 30, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'A single cedar letter, hand-cut and planed smooth. Perfect as a standalone accent or the start of a custom display.', visible: true },
+  { id: 'two-letter', name: '2-Letter Set', smallPrice: 24, mediumPrice: 35, largePrice: 48, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'Two cedar letters cut as a matched set — ideal for town abbreviations, initials, or a coastal home display.', visible: true },
+  { id: 'three-letter', name: '3-Letter Set', smallPrice: 30, mediumPrice: 44, largePrice: 60, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'Three cedar letters as a matched set. Our SIC set is a local favorite — a perfect coastal keepsake or housewarming gift.', visible: true },
+  { id: 'nautical-motif', name: 'Nautical & Beach Motif', smallPrice: 15, mediumPrice: 22, largePrice: 30, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'Hand-cut cedar shapes inspired by the coast. Anchors, crabs, lighthouses, waves — each one planed smooth and ready to display or mount.', visible: true },
+  { id: 'letter-motif-combo', name: 'Letter + Motif Combo', smallPrice: 25, mediumPrice: 38, largePrice: 52, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'A cedar letter paired with a nautical or beach motif — a great combination for a personalized coastal display or gift set.', visible: true },
+  { id: 'custom-name', name: 'Custom Name / Word', smallPrice: 0, mediumPrice: 40, largePrice: 55, smallFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, mediumFinish: { blo: 3, tung: 4, stain: 5, waterseal: 3 }, image: '/assets/customengraved2.png', description: 'A full name, word, or short phrase engraved into cedar. Perfect for house signs, welcome boards, or personalized gifts.', visible: true },
 ];
 
 const initialBalls = [
-  { id: 'unpainted', name: 'Unpainted', price: 45 as number | null, image: '/assets/BB-16Inch.png', description: 'A 16" diameter solid cement ball in its natural finish. Clean, minimal, and surprisingly striking as a garden accent or coastal yard feature.', visible: true },
-  { id: 'classic-stripe', name: 'Classic 6-Stripe', price: 85 as number | null, image: '/assets/BB-16Inch.png', description: 'The iconic beach ball pattern on a solid 16" cement ball. Finished with a protective clear coat for lasting color and weather resistance.', visible: true },
-  { id: 'custom-color', name: 'Custom Color', price: null as number | null, image: '/assets/BB-16Inch.png', description: 'Want a specific color combination? Reach out through our custom order form and we\'ll let you know if we can accommodate and share pricing personally.', visible: true },
+  { id: 'unpainted', name: 'Solid Cement Ball — Unpainted', price: 45 as number | null, image: '/assets/BB-16Inch.png', description: 'A 16" diameter solid cement ball in its natural finish. Clean, minimal, and surprisingly striking as a garden accent or coastal yard feature.', badge: '', details: ['16" diameter', 'Natural cement finish', 'Solid cast construction', 'Weather-resistant'], visible: true },
+  { id: 'classic-stripe', name: 'Classic 6-Stripe Beach Ball', price: 85 as number | null, image: '/assets/BB-16Inch.png', description: 'The iconic beach ball pattern, rendered in durable exterior paint on a solid 16" cement ball. Finished with a protective clear coat for lasting color and weather resistance.', badge: 'Most Popular', details: ['16" diameter', 'Classic 6-stripe pattern', 'Exterior-grade paint', 'Protective clear coat included'], visible: true },
+  { id: 'custom-color', name: 'Custom Color Scheme', price: null as number | null, image: '/assets/BB-16Inch.png', description: "Want a specific color combination? We love a challenge — reach out through our custom order form and we'll let you know if we can accommodate and share pricing with you personally.", badge: '', details: ['16" diameter', 'Any color combination', 'Exterior-grade paint', 'Protective clear coat included'], visible: true },
 ];
 
 const initialYardSale: Array<{ id: string; name: string; price: number; image: string; description: string; visible: boolean }> = [
@@ -152,6 +154,10 @@ function downloadImage(file: File) {
   URL.revokeObjectURL(url);
 }
 
+function esc(str: string) {
+  return str.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n');
+}
+
 // ─── Generic Product Tab (for Yard Sale & Epoxy) ──────────────────────────────
 
 type SimpleProduct = { id: string; name: string; price: number; image: string; description: string; visible: boolean };
@@ -186,24 +192,8 @@ function SimpleProductTab({ products, setProducts, emptyLabel }: {
             <Field label="Image Path"><input className={inputClass} value={p.image} onChange={e => update(p.id, 'image', e.target.value)} placeholder="/assets/your-image.png" /></Field>
           </div>
           <Field label="Description">
-            <textarea className={inputClass + ' resize-none'} rows={3} value={p.description} onChange={e => update(p.id, 'description', e.target.value)} />
+            <textarea className={inputClass + ' resize-none'} rows={4} value={p.description} onChange={e => update(p.id, 'description', e.target.value)} />
           </Field>
-          <div className="mt-4 mb-2">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Finish Upcharges (+$)</p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {Object.entries(finishLabels).map(([key, label]) => (
-                <div key={key} className="flex flex-col gap-1">
-                  <label className="text-xs text-muted-foreground">{label}</label>
-                  <input className={inputClass} type="number"
-                    value={(p as any).finishUpcharges?.[key] ?? 0}
-                    onChange={e => {
-                      const updated = { ...((p as any).finishUpcharges || {}), [key]: Number(e.target.value) };
-                      update(p.id, 'finishUpcharges' as any, updated);
-                    }} />
-                </div>
-              ))}
-            </div>
-          </div>
           <div className="flex items-center justify-between mt-4">
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input type="checkbox" checked={p.visible} onChange={e => update(p.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
@@ -229,7 +219,7 @@ function PlantersTab({ planters, setPlanters }: { planters: typeof initialPlante
     setPlanters(planters.map(p => p.id === id ? { ...p, [field]: value } : p) as typeof initialPlanters);
   }
   function add() {
-    setPlanters([...planters, { id: `box-${Date.now()}`, name: 'New Box', price: 0, dimensions: '', image: '', description: '', visible: true }] as typeof initialPlanters);
+    setPlanters([...planters, { id: `box-${Date.now()}`, name: 'New Box', price: 0, dimensions: '', image: '', description: '', finishUpcharges: { blo: 10, tung: 10, stain: 10, waterseal: 10 }, visible: true }] as typeof initialPlanters);
   }
   function remove(id: string) {
     if (confirm('Remove this product?')) setPlanters(planters.filter(p => p.id !== id) as typeof initialPlanters);
@@ -342,7 +332,7 @@ function CutoutsTab({ cutouts, setCutouts }: { cutouts: typeof initialCutouts; s
 // ─── Balls Tab ────────────────────────────────────────────────────────────────
 
 function BallsTab({ balls, setBalls }: { balls: typeof initialBalls; setBalls: (b: typeof initialBalls) => void }) {
-  function update(id: string, field: string, value: string | number | boolean | null) {
+  function update(id: string, field: string, value: string | number | boolean | null | string[]) {
     setBalls(balls.map(b => b.id === id ? { ...b, [field]: value } : b) as typeof initialBalls);
   }
   return (
@@ -355,11 +345,20 @@ function BallsTab({ balls, setBalls }: { balls: typeof initialBalls; setBalls: (
               <input className={inputClass} type="number" value={b.price ?? 0}
                 onChange={e => update(b.id, 'price', Number(e.target.value) === 0 ? null : Number(e.target.value))} />
             </Field>
+            <Field label="Badge (e.g. Most Popular — leave blank for none)">
+              <input className={inputClass} value={(b as any).badge || ''} onChange={e => update(b.id, 'badge', e.target.value)} />
+            </Field>
             <Field label="Image Path"><input className={inputClass} value={(b as any).image || ''} onChange={e => update(b.id, 'image', e.target.value)} placeholder="/assets/your-image.png" /></Field>
           </div>
           <Field label="Description">
             <textarea className={inputClass + ' resize-none'} rows={3} value={(b as any).description || ''} onChange={e => update(b.id, 'description', e.target.value)} />
           </Field>
+          <div className="mt-4 mb-2">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Details (one per line)</p>
+            <textarea className={inputClass + ' resize-none'} rows={4}
+              value={((b as any).details || []).join('\n')}
+              onChange={e => update(b.id, 'details', e.target.value.split('\n').filter(Boolean))} />
+          </div>
           <div className="flex items-center justify-between mt-4">
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input type="checkbox" checked={b.visible} onChange={e => update(b.id, 'visible', e.target.checked)} className="w-4 h-4 accent-primary" />
@@ -372,14 +371,13 @@ function BallsTab({ balls, setBalls }: { balls: typeof initialBalls; setBalls: (
           </div>
         </Section>
       ))}
-      <button onClick={() => setBalls([...balls, { id: `ball-${Date.now()}`, name: 'New Ball', price: 0 as number | null, image: '/assets/BB-16Inch.png', description: '', visible: true }] as typeof initialBalls)}
+      <button onClick={() => setBalls([...balls, { id: `ball-${Date.now()}`, name: 'New Ball', price: 0 as number | null, image: '/assets/BB-16Inch.png', description: '', badge: '', details: ['16" diameter', 'Weather-resistant'], visible: true }] as typeof initialBalls)}
         className="inline-flex items-center gap-2 px-4 py-2.5 rounded border border-dashed border-border text-sm text-muted-foreground hover:text-foreground hover:border-primary transition-colors">
         <Plus size={14} /> Add Ball
       </button>
     </div>
   );
 }
-
 
 // ─── Gallery Tab ──────────────────────────────────────────────────────────────
 
@@ -435,24 +433,6 @@ function GalleryTab({ gallery, setGallery }: { gallery: GalleryItem[]; setGaller
       </button>
     </div>
   );
-}
-
-function generateGalleryCode(gallery: GalleryItem[]) {
-  const arr = gallery.map(g => `  { id: '${g.id}', slot: '${g.slot}', alt: '${(g.alt || g.caption).replace(/'/g, "\\'")}', category: '${g.category || 'Planter Boxes'}', caption: '${g.caption.replace(/'/g, "\\'")}', visible: ${g.visible !== false} },`).join('\n');
-  return `// ═══════════════════════════════════════════════════
-// ADMIN EXPORT — src/data/galleryItems.ts
-// ═══════════════════════════════════════════════════
-// INSTRUCTIONS:
-// 1. Open src/data/galleryItems.ts
-// 2. Find:  export const galleryItems: GalleryItem[] = [
-// 3. Select from that line to the closing ];
-// 4. Replace with the array below
-// 5. Save, commit, push to GitHub
-// ═══════════════════════════════════════════════════
-
-export const galleryItems: GalleryItem[] = [
-${arr}
-];`;
 }
 
 // ─── Images Tab ───────────────────────────────────────────────────────────────
@@ -520,77 +500,311 @@ function ImagesTab() {
   );
 }
 
-// ─── Code Generators ──────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════════════════════
+// ─── FULL-FILE CODE GENERATORS ────────────────────────────────────────────────
+// Each function returns the COMPLETE source file ready to drop into src/pages/
+// ═══════════════════════════════════════════════════════════════════════════════
 
-function generateProductsCode(planters: typeof initialPlanters) {
+function generateProductsFile(planters: typeof initialPlanters) {
   const arr = planters.filter(p => p.visible).map(p => `  {
     id: '${p.id}',
     price: ${p.price},
-    name: '${p.name}',
-    dimensions: '${p.dimensions}',
+    name: '${esc(p.name)}',
+    dimensions: '${esc(p.dimensions)}',
     sqft: 0,
-    description: '${p.description.replace(/'/g, "\\'")}',
+    description: '${esc(p.description)}',
     bestFor: [],
     image: '${p.image}',
-    imageAlt: '${p.name} cedar planter',
+    imageAlt: '${esc(p.name)} cedar planter',
     finishUpcharges: { none: 0, ${Object.entries((p as any).finishUpcharges || {blo:10,tung:10,stain:10,waterseal:10}).map(([k,v]) => `${k}: ${v}`).join(', ')} },
   }`).join(',\n');
-  return `// ═══════════════════════════════════════════════════
-// ADMIN EXPORT — src/pages/products.tsx
-// ═══════════════════════════════════════════════════
-// INSTRUCTIONS:
-// 1. Open src/pages/products.tsx in a text editor
-// 2. Find this line:  const products: Product[] = [
-// 3. Select from that line down to the closing ];
-// 4. Replace ONLY that section with the array below
-// 5. Save, commit, push to GitHub
-// ═══════════════════════════════════════════════════
+
+  return `import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
+import { Helmet } from '@dr.pogodin/react-helmet';
+import { ArrowRight, Check, ChevronDown, Leaf, Droplets, Sun, Shield } from 'lucide-react';
+
+type FinishKey = 'none' | 'blo' | 'tung' | 'stain' | 'waterseal';
+
+interface FinishColorOption { label: string; hint: string; }
+
+interface Finish {
+  key: FinishKey; name: string; shortName: string; tagline: string;
+  description: string; badge?: string; icon: React.ReactNode;
+  colorOptions?: FinishColorOption[];
+}
+
+interface Product {
+  id: string; name: string; dimensions: string; sqft: number;
+  description: string; bestFor: string[]; image: string; imageAlt: string;
+  finishUpcharges: Record<FinishKey, number>;
+}
+
+const finishes: Finish[] = [
+  { key: 'none', name: 'No Finish', shortName: 'None', tagline: 'Raw cedar, naturally beautiful', description: 'Western red cedar is naturally rot-resistant and weathers gracefully on its own. Choose this if you love the raw look or plan to apply your own finish later.', icon: <Sun size={16} /> },
+  { key: 'blo', name: 'Boiled Linseed Oil', shortName: 'Linseed Oil', tagline: 'Classic protection, warm tone', description: 'A traditional wood finish that deepens the cedar grain and provides basic moisture resistance. Great for covered porches and sheltered outdoor spots.', icon: <Droplets size={16} /> },
+  { key: 'tung', name: 'Food-Safe Natural Oil', shortName: 'Natural Oil', tagline: 'Premium · 100% food-safe · Best for edibles', description: "Our top pick. Pure tung oil penetrates deep into the wood, enhancing the grain with a warm, natural glow. 100% food-safe — the ideal choice if you're growing herbs, vegetables, or anything you'll eat. No harsh chemicals, ever.", badge: 'Best Choice', icon: <Leaf size={16} /> },
+  { key: 'stain', name: 'Exterior Stain', shortName: 'Ext. Stain', tagline: 'Rich color, solid UV protection', description: "A penetrating exterior stain that adds rich, consistent color while protecting against UV fading and moisture. Perfect for matching a deck, fence, or patio aesthetic. Choose your color below.", icon: <Sun size={16} />, colorOptions: [
+    { label: 'Natural Cedar', hint: "Warm honey tone, enhances the wood's natural grain" },
+    { label: 'Driftwood Gray', hint: 'Cool weathered gray, coastal and modern' },
+    { label: 'Weathered Brown', hint: 'Deep earthy brown, classic and rustic' },
+    { label: 'Bleached / Whitewashed', hint: 'Light, airy, beachy' },
+  ]},
+  { key: 'waterseal', name: "Thompson's WaterSeal", shortName: 'WaterSeal', tagline: 'Maximum weather protection', description: 'A clear waterproofing sealer that locks out rain, humidity, and freeze-thaw cycles. Best for fully exposed locations — docks, open patios, coastal yards.', icon: <Shield size={16} /> },
+];
 
 const products: Product[] = [
 ${arr}
-];`;
+];
+
+const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' as const } } } as const;
+const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } } as const;
+
+function BoxSelector({ selected, onSelect }: { selected: Product; onSelect: (p: Product) => void }) {
+  return (
+    <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+      {products.map((p) => (
+        <button key={p.id} onClick={() => onSelect(p)}
+          className={\`relative flex flex-col items-center gap-1.5 p-2 rounded border-2 transition-all duration-200 group \${selected.id === p.id ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50 bg-background'}\`}
+          aria-label={\`Select \${p.name}\`}>
+          <div className="w-full aspect-square overflow-hidden rounded-sm bg-muted flex items-center justify-center">
+            <img src={p.image} alt={p.imageAlt} className="w-full h-full object-contain p-1" />
+          </div>
+          <span className={\`text-[11px] font-semibold leading-tight text-center \${selected.id === p.id ? 'text-primary' : 'text-muted-foreground group-hover:text-foreground'}\`}>{p.name}</span>
+          {selected.id === p.id && (
+            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+              <Check size={9} className="text-primary-foreground" />
+            </span>
+          )}
+        </button>
+      ))}
+    </div>
+  );
 }
 
-function generateCutoutsCode(cutouts: typeof initialCutouts) {
-  const arr = cutouts.filter(c => c.visible).map(c => `  {
-    id: '${c.id}',
-    name: '${c.name}',
-    description: '${c.description.replace(/'/g, "\\'")}',
-    sizes: [
-      { key: 'small', label: 'Small', basePrice: ${c.smallPrice}, description: '4"–5" tall' },
-      { key: 'medium', label: 'Medium', basePrice: ${c.mediumPrice}, description: '6"–8" tall' },
-      { key: 'large', label: 'Large', basePrice: ${c.largePrice}, description: 'Up to 8" tall — finish included' },
-    ],
-  }`).join(',\n');
-  return `// ═══════════════════════════════════════════════════
-// ADMIN EXPORT — src/pages/cedar-cutouts.tsx
-// ═══════════════════════════════════════════════════
-// INSTRUCTIONS:
-// 1. Open src/pages/cedar-cutouts.tsx in a text editor
-// 2. Find this line:  const cutoutProducts: CutoutProduct[] = [
-// 3. Select from that line down to the closing ];
-// 4. Replace ONLY that section with the array below
-// 5. Save, commit, push to GitHub
-// ═══════════════════════════════════════════════════
-
-const cutoutProducts: CutoutProduct[] = [
-${arr}
-];`;
+function FinishOption({ finish, upcharge, selected, onSelect, selectedColor, onColorSelect }: {
+  finish: Finish; upcharge: number; selected: boolean; onSelect: () => void;
+  selectedColor?: string; onColorSelect?: (color: string) => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <div className={\`rounded border-2 transition-all duration-200 overflow-hidden \${selected ? 'border-primary' : 'border-border hover:border-primary/40'}\`}>
+      <button onClick={onSelect} className="w-full flex items-center gap-3 px-4 py-3 text-left">
+        <div className={\`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors \${selected ? 'border-primary bg-primary' : 'border-border'}\`}>
+          {selected && <div className="w-2 h-2 rounded-full bg-primary-foreground" />}
+        </div>
+        <span className={\`shrink-0 \${selected ? 'text-primary' : 'text-muted-foreground'}\`}>{finish.icon}</span>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-sm font-semibold text-foreground">{finish.name}</span>
+            {finish.badge && <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary text-primary-foreground">{finish.badge}</span>}
+          </div>
+          <p className="text-xs text-muted-foreground mt-0.5">{finish.tagline}</p>
+        </div>
+        <div className="shrink-0 text-right">
+          {upcharge > 0 ? <span className="text-sm font-semibold text-primary">+\${upcharge}</span> : <span className="text-xs text-muted-foreground">Included</span>}
+        </div>
+      </button>
+      <AnimatePresence>
+        {selected && finish.colorOptions && finish.colorOptions.length > 0 && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
+            <div className="px-4 pb-3 pt-1 border-t border-border">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Choose a color</p>
+              <div className="flex flex-col gap-1.5">
+                {finish.colorOptions.map((opt) => (
+                  <button key={opt.label} onClick={() => onColorSelect?.(opt.label)}
+                    className={\`flex items-start gap-3 px-3 py-2 rounded text-left transition-colors \${selectedColor === opt.label ? 'bg-primary/10 border border-primary/30' : 'bg-muted/50 border border-transparent hover:border-primary/20'}\`}>
+                    <div className={\`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5 transition-colors \${selectedColor === opt.label ? 'border-primary bg-primary' : 'border-border'}\`}>
+                      {selectedColor === opt.label && <div className="w-1.5 h-1.5 rounded-full bg-primary-foreground" />}
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-foreground leading-tight">{opt.label}</p>
+                      <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{opt.hint}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <button onClick={() => setExpanded(!expanded)} className="w-full flex items-center gap-1 px-4 pb-2 text-xs text-muted-foreground hover:text-foreground transition-colors">
+        <ChevronDown size={12} className={\`transition-transform duration-200 \${expanded ? 'rotate-180' : ''}\`} />
+        {expanded ? 'Less info' : 'Why choose this?'}
+      </button>
+      <AnimatePresence>
+        {expanded && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
+            <p className="px-4 pb-4 text-xs text-muted-foreground leading-relaxed border-t border-border pt-3 mt-1">{finish.description}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }
 
-function generateBallsCode(balls: typeof initialBalls) {
+function ProductConfigurator() {
+  const [selectedProduct, setSelectedProduct] = useState<Product>(products[0]);
+  const [selectedFinish, setSelectedFinish] = useState<FinishKey>('none');
+  const [selectedStainColor, setSelectedStainColor] = useState<string>('');
+
+  const upcharge = selectedProduct.finishUpcharges[selectedFinish];
+  const finishName = finishes.find((f) => f.key === selectedFinish)?.name ?? 'No Finish';
+  const finishLabel = selectedFinish === 'stain' && selectedStainColor ? \`\${finishName} — \${selectedStainColor}\` : finishName;
+  const orderParams = new URLSearchParams({ product: selectedProduct.name, dimensions: selectedProduct.dimensions, finish: finishLabel });
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+      <div className="flex flex-col gap-5">
+        <AnimatePresence mode="wait">
+          <motion.div key={selectedProduct.id} initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.25 }}
+            className="w-full rounded-sm overflow-hidden border border-border bg-muted flex items-center justify-center" style={{ aspectRatio: '4/3' }}>
+            <img src={selectedProduct.image} alt={selectedProduct.imageAlt} className="w-full h-full object-contain p-6" />
+          </motion.div>
+        </AnimatePresence>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Select a Box</p>
+          <BoxSelector selected={selectedProduct} onSelect={(p) => { setSelectedProduct(p); setSelectedFinish('none'); }} />
+        </div>
+      </div>
+      <div className="flex flex-col gap-6">
+        <AnimatePresence mode="wait">
+          <motion.div key={selectedProduct.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.25 }}>
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-primary mb-1">Cedar Planter Box</p>
+            <h2 className="font-heading text-4xl md:text-5xl text-foreground mb-2" style={{ letterSpacing: '-0.02em' }}>{selectedProduct.name}</h2>
+            <p className="font-mono text-sm text-primary mb-4">{selectedProduct.dimensions}</p>
+            <div className="flex items-baseline gap-2 mb-4">
+              <span className="text-3xl font-bold text-foreground">\${(selectedProduct as any).price + upcharge}</span>
+              {upcharge > 0 && <span className="text-sm text-muted-foreground">includes {finishes.find(f => f.key === selectedFinish)?.shortName} finish</span>}
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 mb-4" style={{ background: 'hsl(var(--primary) / 0.07)' }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="text-primary shrink-0"><path d="M3 17l4-8 4 4 4-6 4 10"/><path d="M3 21h18"/></svg>
+              <span className="text-xs font-semibold text-primary">Hand-sanded · Smooth, splinter-free finish</span>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-5">{selectedProduct.description}</p>
+            <div className="flex flex-wrap gap-2 mb-2">
+              {selectedProduct.bestFor.map((tag) => (
+                <span key={tag} className="text-xs px-3 py-1 rounded-full border border-border text-muted-foreground bg-background">{tag}</span>
+              ))}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+        <div className="h-px bg-border" />
+        <div>
+          <p className="text-sm font-semibold text-foreground mb-1">Choose a Finish</p>
+          <p className="text-xs text-muted-foreground mb-4">All finishes are applied by hand before shipping. Expand any option to learn more.</p>
+          <div className="flex flex-col gap-2">
+            {finishes.map((finish) => (
+              <FinishOption key={finish.key} finish={finish} upcharge={selectedProduct.finishUpcharges[finish.key]}
+                selected={selectedFinish === finish.key}
+                onSelect={() => { setSelectedFinish(finish.key); if (finish.key !== 'stain') setSelectedStainColor(''); }}
+                selectedColor={finish.key === 'stain' ? selectedStainColor : undefined}
+                onColorSelect={finish.key === 'stain' ? setSelectedStainColor : undefined} />
+            ))}
+          </div>
+        </div>
+        {upcharge > 0 && (
+          <p className="text-xs text-muted-foreground bg-muted rounded px-3 py-2">
+            The <strong>{finishLabel}</strong> finish adds <strong>+\${upcharge}</strong> to the base price of {selectedProduct.name}.
+          </p>
+        )}
+        <Link to={\`/order?\${orderParams.toString()}\`}
+          className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+          Order {selectedProduct.name}{upcharge > 0 ? \` with \${finishes.find(f => f.key === selectedFinish)?.shortName}\` : ''} <ArrowRight size={16} />
+        </Link>
+        <p className="text-xs text-muted-foreground text-center">
+          Not sure? <Link to="/contact" className="underline hover:text-foreground transition-colors">Send us a message</Link> — we're happy to help you choose.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Cedar Planter Boxes — Seashore Cedar</title>
+        <meta name="description" content="Handmade cedar planter boxes in 7 sizes — from compact porch planters to raised garden beds. Choose your box, pick a finish, and order direct from the maker." />
+        <meta property="og:title" content="Cedar Planter Boxes — Seashore Cedar" />
+        <meta property="og:description" content="Handmade cedar planter boxes in 7 sizes. Choose your finish and order direct from the maker." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <section className="relative py-16 md:py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/assets/background-header_WW.png" alt="Cedar planter boxes" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/50 to-stone-900/70" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-[0.25em] uppercase mb-3" style={{ color: 'hsl(var(--primary) / 0.9)' }}>Handmade in Small Batches</motion.p>
+            <motion.h1 variants={fadeUp} className="font-heading text-5xl md:text-6xl text-white mb-4" style={{ letterSpacing: '-0.02em' }}>Cedar Planter Boxes</motion.h1>
+            <motion.p variants={fadeUp} className="text-white/75 text-base md:text-lg max-w-xl mx-auto">Seven sizes. Five finish options. Hand-planed smooth and built from Western red cedar to last outdoors.</motion.p>
+          </motion.div>
+        </div>
+      </section>
+      <section className="py-16 md:py-24" style={{ background: 'hsl(var(--background))' }}>
+        <div className="container mx-auto px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
+            <ProductConfigurator />
+          </motion.div>
+        </div>
+      </section>
+      <section className="py-16 md:py-20 border-t border-border" style={{ background: 'hsl(25, 30%, 94%)' }}>
+        <div className="container mx-auto px-6">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-10">
+            <motion.h2 variants={fadeUp} className="font-heading text-3xl md:text-4xl text-foreground mb-2" style={{ letterSpacing: '-0.02em' }}>All Boxes at a Glance</motion.h2>
+            <motion.p variants={fadeUp} className="text-muted-foreground text-sm">Every box is built from the same quality Western red cedar. Dimensions are finished size.</motion.p>
+          </motion.div>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            {products.map((p) => (
+              <motion.div key={p.id} variants={fadeUp} className="flex flex-col items-center gap-3 bg-background rounded-sm border border-border p-4 text-center">
+                <div className="w-full aspect-square bg-muted rounded-sm overflow-hidden flex items-center justify-center">
+                  <img src={p.image} alt={p.imageAlt} className="w-full h-full object-contain p-2" />
+                </div>
+                <div>
+                  <p className="font-heading text-base text-foreground">{p.name}</p>
+                  <p className="text-[11px] font-mono text-primary mt-0.5 leading-snug">{p.dimensions}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+      <section className="py-16 md:py-20" style={{ background: 'hsl(var(--background))' }}>
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="max-w-xl">
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-primary mb-3">Make It Personal</p>
+              <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-3" style={{ letterSpacing: '-0.02em' }}>Add Custom Engraving</h2>
+              <p className="text-muted-foreground leading-relaxed text-sm">Any box can be personalized with names, dates, coordinates, or artwork. Just mention it when you place your order.</p>
+            </div>
+            <div className="shrink-0">
+              <Link to="/custom-orders" className="inline-flex items-center gap-2 px-7 py-3.5 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+                Start a Custom Order <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}`;
+}
+
+function generateBallsFile(balls: typeof initialBalls) {
   const arr = balls.filter(b => b.visible).map(b => `  {
     id: '${b.id}',
-    name: '${b.name}',
-    description: "${((b as any).description || '').replace(/"/g, '\\"')}",
+    name: '${esc(b.name)}',
+    description: '${esc((b as any).description || '')}',
     price: ${b.price === null ? 'null' : b.price},
     image: '${(b as any).image || '/assets/BB-16Inch.png'}',
-    details: ['16\" diameter', 'Solid cast construction', 'Weather-resistant'],
+    badge: '${esc((b as any).badge || '')}',
+    details: [${((b as any).details || []).map((d: string) => `'${esc(d)}'`).join(', ')}],
   }`).join(',\n');
-  return `// ADMIN EXPORT
-// Replace the ENTIRE contents of src/pages/cement-beach-balls.tsx with this file:
 
-import { motion } from 'motion/react';
+  return `import { motion } from 'motion/react';
 import { Helmet } from '@dr.pogodin/react-helmet';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
@@ -638,7 +852,7 @@ export default function CementBeachBallsPage() {
     <>
       <Helmet>
         <title>Cement Beach Balls — Seashore Cedar</title>
-        <meta name="description" content='16" solid cement beach balls — unpainted or classic 6-stripe. Made in Wildwood, NJ.' />
+        <meta name="description" content='16" solid cement beach balls — unpainted or classic 6-stripe. A playful coastal accent for any garden or patio. Made in Wildwood, NJ.' />
       </Helmet>
       <section className="relative py-14 md:py-18 overflow-hidden">
         <div className="absolute inset-0">
@@ -668,25 +882,260 @@ export default function CementBeachBallsPage() {
 }`;
 }
 
-function generateSimpleCode(products: SimpleProduct[], pageName: string, varName: string) {
-  if (products.length === 0) return `// No ${pageName} items yet.`;
-  const arr = products.filter(p => p.visible).map(p => `  {
-    id: '${p.id}',
-    name: '${p.name}',
-    price: ${p.price},
-    image: '${p.image}',
-    description: '${p.description.replace(/'/g, "\\'")}',
-  }`).join(',\n');
-  return `// ═══════════════════════════════════════════════════
-// ADMIN EXPORT — ${pageName}
-// ═══════════════════════════════════════════════════
-// Send this file to your developer to add these
-// products to the ${pageName} page.
-// ═══════════════════════════════════════════════════
+function generateGalleryDataFile(gallery: GalleryItem[]) {
+  const arr = gallery.map(g => `  { id: '${g.id}', slot: '${g.slot}', alt: '${esc(g.alt || g.caption)}', category: '${g.category || 'Planter Boxes'}', caption: '${esc(g.caption)}', visible: ${g.visible !== false}${(g as any).link ? `, link: '${(g as any).link}'` : ''}${(g as any).linkLabel ? `, linkLabel: '${esc((g as any).linkLabel)}'` : ''}${(g as any).span ? `, span: '${(g as any).span}'` : ''} },`).join('\n');
+  return `// ─── Gallery Data ─────────────────────────────────────────────────────────────
+// Single source of truth for gallery photos.
+// Generated by Admin Panel — drop this file into src/data/galleryItems.ts
 
-const products = [
+export type GalleryCategory = 'Planter Boxes' | 'Cedar Cutouts' | 'Cement Beach Balls' | 'Details';
+
+export interface GalleryItem {
+  id: string; slot: string; alt: string; category: GalleryCategory;
+  caption: string; visible?: boolean; link?: string; linkLabel?: string;
+  span?: 'wide' | 'tall' | 'normal';
+}
+
+export const galleryItems: GalleryItem[] = [
 ${arr}
 ];`;
+}
+
+function generateYardSaleFile(products: SimpleProduct[]) {
+  const arr = products.filter(p => p.visible).map(p => `  {
+    id: '${p.id}',
+    name: '${esc(p.name)}',
+    price: ${p.price},
+    image: '${p.image}',
+    description: '${esc(p.description)}',
+    visible: true,
+  }`).join(',\n');
+
+  return `import { motion } from 'motion/react';
+import { Helmet } from '@dr.pogodin/react-helmet';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Mail } from 'lucide-react';
+
+const fadeUp = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' as const } } } as const;
+const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } } as const;
+
+interface YardSaleProduct { id: string; name: string; price: number; image: string; description: string; visible: boolean; }
+
+const products: YardSaleProduct[] = [
+${arr}
+];
+
+function ProductCard({ product }: { product: YardSaleProduct }) {
+  const orderParams = new URLSearchParams({ product: product.name, price: String(product.price) });
+  return (
+    <motion.div variants={fadeUp} className="flex flex-col rounded border border-border overflow-hidden" style={{ background: 'hsl(var(--background))' }}>
+      <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
+        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+        <span className="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full bg-primary text-primary-foreground">Yard Sale</span>
+      </div>
+      <div className="flex flex-col flex-1 p-5">
+        <h3 className="font-heading text-lg text-foreground mb-3" style={{ letterSpacing: '-0.01em' }}>{product.name}</h3>
+        <div className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+          {product.description.split('\\n\\n').map((para, i) => <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>)}
+        </div>
+        <div className="flex items-center justify-between py-3 px-4 rounded bg-muted mb-4">
+          <span className="text-sm text-muted-foreground">Price</span>
+          <span className="text-lg font-bold text-foreground">\${product.price}</span>
+        </div>
+        <Link to={\`/order?\${orderParams.toString()}\`}
+          className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+          Order — \${product.price} <ArrowRight size={15} />
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function YardSalePage() {
+  return (
+    <>
+      <Helmet>
+        <title>Yard Sale — Seashore Cedar</title>
+        <meta name="description" content="Discounted items, seconds, and one-of-a-kind pieces at reduced prices from Seashore Cedar in Wildwood, NJ." />
+      </Helmet>
+      <section className="relative py-14 md:py-18 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/assets/background-header_WW.png" alt="" aria-hidden="true" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/75 via-stone-900/55 to-stone-900/75" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-[0.25em] uppercase mb-3" style={{ color: 'hsl(var(--primary) / 0.9)' }}>Seashore Cedar</motion.p>
+            <motion.h1 variants={fadeUp} className="font-heading text-4xl md:text-5xl text-white mb-3" style={{ letterSpacing: '-0.02em' }}>Yard Sale</motion.h1>
+            <motion.p variants={fadeUp} className="text-white/70 text-sm md:text-base">Discounted items, seconds &amp; one-of-a-kind pieces — while they last</motion.p>
+          </motion.div>
+        </div>
+      </section>
+      <section className="py-16 md:py-24" style={{ background: 'hsl(var(--background))' }}>
+        <div className="container mx-auto px-6">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {products.filter(p => p.visible).map(product => <ProductCard key={product.id} product={product} />)}
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link to="/products" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+              Shop Full Price Items <ArrowRight size={15} />
+            </Link>
+            <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-semibold text-sm border border-border text-foreground hover:bg-muted transition-colors">
+              <Mail size={15} /> Ask About Availability
+            </Link>
+          </motion.div>
+          <p className="text-center text-xs text-muted-foreground mt-6">Free local pickup · Wildwood, NJ · Local delivery Mon–Thu to select areas</p>
+        </div>
+      </section>
+    </>
+  );
+}`;
+}
+
+function generateEpoxyFile(products: SimpleProduct[]) {
+  if (products.filter(p => p.visible).length === 0) {
+    return `import { motion } from 'motion/react';
+import { Helmet } from '@dr.pogodin/react-helmet';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Mail } from 'lucide-react';
+
+const fadeUp = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' as const } } } as const;
+const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } } as const;
+
+export default function ArtisanEpoxyPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Artisan Epoxy — Seashore Cedar</title>
+        <meta name="description" content="Artisan epoxy resin creations coming soon from Seashore Cedar in Wildwood, NJ." />
+      </Helmet>
+      <section className="relative py-14 md:py-18 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/assets/background-header_WW.png" alt="" aria-hidden="true" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/75 via-stone-900/55 to-stone-900/75" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-[0.25em] uppercase mb-3" style={{ color: 'hsl(var(--primary) / 0.9)' }}>Seashore Cedar</motion.p>
+            <motion.h1 variants={fadeUp} className="font-heading text-4xl md:text-5xl text-white mb-3" style={{ letterSpacing: '-0.02em' }}>Artisan Epoxy</motion.h1>
+            <motion.p variants={fadeUp} className="text-white/70 text-sm md:text-base">Something new is in the works</motion.p>
+          </motion.div>
+        </div>
+      </section>
+      <section className="py-24 md:py-36" style={{ background: 'hsl(var(--background))' }}>
+        <div className="container mx-auto px-6 max-w-xl text-center">
+          <motion.div variants={stagger} initial="hidden" animate="visible" className="flex flex-col items-center gap-6">
+            <motion.div variants={fadeUp} className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+              <span className="text-3xl">🌊</span>
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <h2 className="font-heading text-3xl text-foreground mb-4" style={{ letterSpacing: '-0.02em' }}>Coming Soon</h2>
+              <p className="text-muted-foreground leading-relaxed mb-2">We're working on a new line of artisan epoxy resin creations with a coastal twist — think river tables, serving boards, decorative pieces, and more.</p>
+              <p className="text-muted-foreground leading-relaxed">Check back soon or reach out if you have something specific in mind — we love a custom challenge.</p>
+            </motion.div>
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mt-2">
+              <Link to="/custom-orders" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+                Request a Custom Piece <ArrowRight size={15} />
+              </Link>
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-semibold text-sm border border-border text-foreground hover:bg-muted transition-colors">
+                <Mail size={15} /> Get in Touch
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
+}`;
+  }
+
+  const arr = products.filter(p => p.visible).map(p => `  {
+    id: '${p.id}',
+    name: '${esc(p.name)}',
+    price: ${p.price},
+    image: '${p.image}',
+    description: '${esc(p.description)}',
+    visible: true,
+  }`).join(',\n');
+
+  return `import { motion } from 'motion/react';
+import { Helmet } from '@dr.pogodin/react-helmet';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Mail } from 'lucide-react';
+
+const fadeUp = { hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' as const } } } as const;
+const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } } as const;
+
+interface EpoxyProduct { id: string; name: string; price: number; image: string; description: string; visible: boolean; }
+
+const products: EpoxyProduct[] = [
+${arr}
+];
+
+function ProductCard({ product }: { product: EpoxyProduct }) {
+  const orderParams = new URLSearchParams({ product: product.name, price: String(product.price) });
+  return (
+    <motion.div variants={fadeUp} className="flex flex-col rounded border border-border overflow-hidden" style={{ background: 'hsl(var(--background))' }}>
+      <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
+        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+      </div>
+      <div className="flex flex-col flex-1 p-5">
+        <h3 className="font-heading text-lg text-foreground mb-3" style={{ letterSpacing: '-0.01em' }}>{product.name}</h3>
+        <div className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+          {product.description.split('\\n\\n').map((para, i) => <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>)}
+        </div>
+        <div className="flex items-center justify-between py-3 px-4 rounded bg-muted mb-4">
+          <span className="text-sm text-muted-foreground">Price</span>
+          <span className="text-lg font-bold text-foreground">\${product.price}</span>
+        </div>
+        <Link to={\`/order?\${orderParams.toString()}\`}
+          className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+          Order — \${product.price} <ArrowRight size={15} />
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function ArtisanEpoxyPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Artisan Epoxy — Seashore Cedar</title>
+        <meta name="description" content="Artisan epoxy resin creations from Seashore Cedar in Wildwood, NJ — coastal river tables, serving boards, and decorative pieces." />
+      </Helmet>
+      <section className="relative py-14 md:py-18 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/assets/background-header_WW.png" alt="" aria-hidden="true" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/75 via-stone-900/55 to-stone-900/75" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-[0.25em] uppercase mb-3" style={{ color: 'hsl(var(--primary) / 0.9)' }}>Seashore Cedar</motion.p>
+            <motion.h1 variants={fadeUp} className="font-heading text-4xl md:text-5xl text-white mb-3" style={{ letterSpacing: '-0.02em' }}>Artisan Epoxy</motion.h1>
+            <motion.p variants={fadeUp} className="text-white/70 text-sm md:text-base">Coastal-inspired epoxy resin creations, handcrafted in Wildwood, NJ</motion.p>
+          </motion.div>
+        </div>
+      </section>
+      <section className="py-16 md:py-24" style={{ background: 'hsl(var(--background))' }}>
+        <div className="container mx-auto px-6">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {products.filter(p => p.visible).map(product => <ProductCard key={product.id} product={product} />)}
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link to="/custom-orders" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
+              Request a Custom Piece <ArrowRight size={15} />
+            </Link>
+            <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-semibold text-sm border border-border text-foreground hover:bg-muted transition-colors">
+              <Mail size={15} /> Get in Touch
+            </Link>
+          </motion.div>
+          <p className="text-center text-xs text-muted-foreground mt-6">Free local pickup · Wildwood, NJ · Allow 4–5 business days</p>
+        </div>
+      </section>
+    </>
+  );
+}`;
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
@@ -706,12 +1155,12 @@ export default function AdminPage() {
 
   function handleSave() {
     const exports: Record<Tab, () => void> = {
-      planters: () => downloadFile('ADMIN_products.ts', generateProductsCode(planters)),
-      cutouts: () => downloadFile('ADMIN_cutouts.ts', generateCutoutsCode(cutouts)),
-      balls: () => downloadFile('ADMIN_balls.ts', generateBallsCode(balls)),
-      gallery: () => downloadFile('ADMIN_gallery.ts', generateGalleryCode(gallery)),
-      yardsale: () => downloadFile('ADMIN_yardsale.ts', generateSimpleCode(yardSale, 'Yard Sale', 'GENERATED_YARD_SALE')),
-      epoxy: () => downloadFile('ADMIN_epoxy.ts', generateSimpleCode(epoxy, 'Artisan Epoxy', 'GENERATED_EPOXY')),
+      planters: () => downloadFile('products.tsx', generateProductsFile(planters)),
+      cutouts: () => alert('Cedar Cutouts export coming soon — contact your developer to update cedar-cutouts.tsx'),
+      balls: () => downloadFile('cement-beach-balls.tsx', generateBallsFile(balls)),
+      gallery: () => downloadFile('galleryItems.ts', generateGalleryDataFile(gallery)),
+      yardsale: () => downloadFile('yard-sale.tsx', generateYardSaleFile(yardSale)),
+      epoxy: () => downloadFile('artisan-epoxy.tsx', generateEpoxyFile(epoxy)),
       images: () => {},
     };
     exports[tab]();
@@ -720,12 +1169,11 @@ export default function AdminPage() {
   }
 
   function handleExportAll() {
-    downloadFile('ADMIN_products.ts', generateProductsCode(planters));
-    downloadFile('ADMIN_cutouts.ts', generateCutoutsCode(cutouts));
-    downloadFile('ADMIN_balls.ts', generateBallsCode(balls));
-    downloadFile('ADMIN_gallery.ts', generateGalleryCode(gallery));
-    if (yardSale.length > 0) downloadFile('ADMIN_yardsale.ts', generateSimpleCode(yardSale, 'Yard Sale', 'GENERATED_YARD_SALE'));
-    if (epoxy.length > 0) downloadFile('ADMIN_epoxy.ts', generateSimpleCode(epoxy, 'Artisan Epoxy', 'GENERATED_EPOXY'));
+    downloadFile('products.tsx', generateProductsFile(planters));
+    downloadFile('cement-beach-balls.tsx', generateBallsFile(balls));
+    downloadFile('galleryItems.ts', generateGalleryDataFile(gallery));
+    downloadFile('yard-sale.tsx', generateYardSaleFile(yardSale));
+    downloadFile('artisan-epoxy.tsx', generateEpoxyFile(epoxy));
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
   }
@@ -739,6 +1187,14 @@ export default function AdminPage() {
     { key: 'gallery', label: 'Gallery', icon: <LayoutGrid size={14} /> },
     { key: 'images', label: 'Images', icon: <Image size={14} /> },
   ];
+
+  const fileNames: Partial<Record<Tab, string>> = {
+    planters: 'products.tsx → src/pages/',
+    balls: 'cement-beach-balls.tsx → src/pages/',
+    gallery: 'galleryItems.ts → src/data/',
+    yardsale: 'yard-sale.tsx → src/pages/',
+    epoxy: 'artisan-epoxy.tsx → src/pages/',
+  };
 
   return (
     <>
@@ -757,7 +1213,7 @@ export default function AdminPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded font-semibold text-xs border border-border text-foreground hover:bg-muted transition-colors">
                 <Download size={13} /> Export All
               </button>
-              {tab !== 'images' && (
+              {tab !== 'images' && tab !== 'cutouts' && (
                 <button onClick={handleSave}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded font-semibold text-xs bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
                   {saved ? <><CheckCircle size={13} /> Downloaded!</> : <><Save size={13} /> Save & Download</>}
@@ -787,7 +1243,9 @@ export default function AdminPage() {
           <div className="border-b border-border bg-muted/30 px-6 py-3">
             <div className="container mx-auto flex items-start gap-2 text-xs text-muted-foreground">
               <Type size={13} className="shrink-0 mt-0.5 text-primary" />
-              <span>Make changes below → <strong className="text-foreground">Save & Download</strong> → drop the file into your GitHub folder → commit & push → Render deploys automatically.</span>
+              <span>
+                Make changes below → <strong className="text-foreground">Save & Download</strong> → the file downloads as <strong className="text-foreground">{fileNames[tab] ?? 'the correct filename'}</strong> → drop it into that folder in your project → commit &amp; push in GitHub Desktop → Render redeploys automatically → hard refresh <kbd className="bg-muted border border-border rounded px-1">Ctrl+Shift+R</kbd>
+              </span>
             </div>
           </div>
         )}
