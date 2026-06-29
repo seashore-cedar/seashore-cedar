@@ -32,7 +32,40 @@ const initialBalls = [
   { id: 'custom-color', name: 'Custom Color', price: null as number | null, image: '/assets/BB-16Inch.png', description: 'Want a specific color combination? Reach out through our custom order form and we\'ll let you know if we can accommodate and share pricing personally.', visible: true },
 ];
 
-const initialYardSale: Array<{ id: string; name: string; price: number; image: string; description: string; visible: boolean }> = [];
+const initialYardSale: Array<{ id: string; name: string; price: number; image: string; description: string; visible: boolean }> = [
+  {
+    id: 'item-1782656159664',
+    name: 'Stand-Tall Nautical Planter — One of a Kind Folk Art Original',
+    price: 85,
+    image: '/assets/tall boy 28in front.jpg',
+    description: 'At nearly 2½ feet tall with a generous ~14in square top, this statement planter commands attention the moment it hits your porch, deck, or garden. Three hand-cut coastal motifs tell the story — a seahorse on the front greets every visitor, a starfish watches the left, and a scallop shell faces right — each one stained in rich nautical blue and built right into the cedar panels.\n\nThe trim carries that same deep blue, while the interior panels are finished in a soft nautical off-white that makes the whole piece pop. And here\'s the practical magic: with 12in of usable planter depth, you\'re not filling a 28in box — your soil sits right where it needs to be, and your plants sit up at the perfect show height.\n\nBuilt from naturally rot-resistant western red cedar with exterior-grade stains throughout, this planter is already ready to go — no finishing needed, no waiting. Just drop it in place, add your favorite plants, and let it do the talking.\n\nThis one won\'t be reproduced. It\'s a true folk art original, finished and ready for its forever home. See more angles in our gallery: https://seashorecedar.com/gallery',
+    visible: true,
+  },
+  {
+    id: 'item-1782656220054',
+    name: 'Anglesea, North Wildwood, Wildwood & the Crest - Cutting Boards',
+    price: 45,
+    image: '/assets/Seaturtle_on_cutting_board.png',
+    description: 'One-of-a-Kind Engraved Bamboo Cutting Boards — Sold as a Pair for $45 or individually at $30 & $20 (see image).\n\nTwo boards, two coastal stories — and once they\'re gone, they\'re gone for good. The larger board features a custom-engraved sea turtle alongside North Wildwood & Anglesea, while its companion celebrates Wildwood & The Crest with its own matching turtle design. Each one is laser-engraved into Vietnamese bamboo and finished with food-safe cutting board wax — ready to display, ready to use, and built to last.\n\nWhether they hang on a kitchen wall, anchor a charcuterie spread, or become the centerpiece of a beach house kitchen, these boards carry a little piece of the Five Mile Beach wherever they go. Truly one of a kind. Not reproducible. Yours if you move fast. See back side in our gallery: https://seashorecedar.com/gallery',
+    visible: true,
+  },
+  {
+    id: 'item-1782656283179',
+    name: 'Limited Edition Patriotic Cedar Planter — 16in × 16in',
+    price: 45,
+    image: '/assets/GBA 2.png',
+    description: 'America turns 250 this year, and we think that deserves more than a bumper sticker.\n\nThis 16in × 16in western red cedar planter is engraved with a bold American Flag and God Bless America — a one-of-a-kind piece made right here on the Jersey Shore to mark a once-in-a-lifetime milestone. Naturally rot-resistant cedar means it\'ll still be on your porch long after the fireworks fade.\n\nPlant it up in red, white, and blue for the Fourth, or let it stand on its own as a lasting tribute to the 250th Anniversary. Either way, it\'s a conversation starter from July 4th straight through to next summer. Treated with natural Tung Oil.\n\nLimited availability — made to celebrate, not to mass produce.',
+    visible: true,
+  },
+  {
+    id: 'item-1782656331345',
+    name: 'Patriotic Cedar Planter — 16in × 16in | Artisan Second',
+    price: 40,
+    image: '/assets/GBA 1.png',
+    description: 'Same bold American Flag and God Bless America laser engraving. Same naturally rot-resistant western red cedar. Same Jersey Shore craftsmanship — with one small story to tell.\n\nDuring engraving, the cedar did what cedar sometimes does — showed its character. A hairline grain split in the word America has been hand-stabilized with wood glue and sealed with tung oil to stop it in its tracks. You\'d have to know to look for it.\n\nWe could have quietly tossed it. Instead we\'re offering it at a discount because the piece is genuinely beautiful and a tiny natural quirk in the wood shouldn\'t keep it from finding a home.\n\nThis is a one-time deal on a one-of-a-kind piece. If you love the look but love a bargain more, this one\'s for you.',
+    visible: true,
+  },
+];
 
 const initialEpoxy: Array<{ id: string; name: string; price: number; image: string; description: string; visible: boolean }> = [];
 
