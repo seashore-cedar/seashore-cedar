@@ -160,7 +160,7 @@ export default function ContactPage() {
                     <Instagram size={17} />
                   </a>
                   <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/profile.php?id=61592668532747"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Seashore Cedar on Facebook"
