@@ -123,7 +123,7 @@ export default function ContactPage() {
               {/* Contact details */}
               <motion.div variants={fadeUp} className="flex flex-col gap-4">
                 <a
-                  href="mailto:seashorecedar@usa.com"
+                  href="mailto:orders@seashorecedar.com"
                   className="flex items-center gap-4 group"
                 >
                   <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-primary/10 group-hover:bg-primary/20 transition-colors">
@@ -131,7 +131,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-0.5">Email</p>
-                    <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">seashorecedar@usa.com</p>
+                    <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">orders@seashorecedar.com</p>
                   </div>
                 </a>
 
